@@ -20,4 +20,9 @@ class Variant extends Model
     {
         return $this->belongsToMany('App\valueable', 'variant_valueable','variant_id','valueable_id');
     }
+    
+    public function additions()
+    {
+        return $this->morphMany('App\Addition', 'additionable');
+    }
 }

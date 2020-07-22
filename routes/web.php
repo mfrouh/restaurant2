@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin'], function () {
 
  Route::get('/valueable/create/{product}','Admin\ValueableController@create');
  Route::get('/variant/create/{product}','Admin\VariantController@create');
+ Route::get('/offer/create/{product}','Admin\OfferController@create');
+
  Route::get('/dashboard','Admin\PagesController@dashboard');
  Route::get('/clients','Admin\PagesController@clients');
  Route::get('/orders','Admin\PagesController@orders');

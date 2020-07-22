@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Offer;
+use App\Product;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -24,9 +25,9 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        return view('admin.offer.create');
+        return view('admin.offer.create',compact('product'));
     }
 
     /**
