@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fuild">
-    <a href="/admin/offer/deleteoffers" class="btn btn-danger shadow-sm m-2 btn-sm">العروض المحذوفة</a>
+    <a href="/admin/addition/deleteadditions" class="btn btn-danger shadow-sm m-2 btn-sm">العروض المحذوفة</a>
     <div class="card card-primary text-center">
         <div class="card-header">العروض</div>
         <div class="card-body">
@@ -12,25 +12,21 @@
                         <th>اسم المنتج</th>
                         <th>نوع العرض</th>
                         <th>قيمة العرض</th>
-                        <th>بداية العرض</th>
-                        <th>نهاية العرض</th>
                         <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($offers as $k=> $offer)
+                    @forelse ($additions as $k=> $addition)
                     <tr>
                         <td>{{$k+1}}</td>
-                        <td>{{$offer->product->name}}</td>
-                        <td>{{typeoffer($offer->type)}}</td>
-                        <td>{{$offer->value}}</td>
-                        <td>{{$offer->start_offer}}</td>
-                        <td>{{$offer->end_offer}}</td>
+                        <td>{{$addition->product->name}}</td>
+                        <td>{{typeaddition($addition->type)}}</td>
+                        <td>{{$addition->value}}</td>
                         <td>
-                            <a href="/admin/offer/{{$offer->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="/admin/addition/{{$addition->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();
-                              document.getElementById('delete-offer-{{$offer->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
-                              <form id="delete-offer-{{$offer->id}}" action="/admin/offer/{{$offer->id}}" method="post" style="display: none;">
+                              document.getElementById('delete-addition-{{$addition->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
+                              <form id="delete-addition-{{$addition->id}}" action="/admin/addition/{{$addition->id}}" method="post" style="display: none;">
                                 @csrf
                                 @method("DELETE")
                               </form>
