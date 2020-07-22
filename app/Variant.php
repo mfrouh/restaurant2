@@ -16,6 +16,11 @@ class Variant extends Model
         return $this->morphMany('App\image', 'imageable');
     }
     
+    public function image()
+    {
+        return $this->morphOne('App\image', 'imageable');
+    }
+    
     public function valueables()
     {
         return $this->belongsToMany('App\valueable', 'variant_valueable','variant_id','valueable_id');

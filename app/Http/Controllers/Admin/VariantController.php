@@ -65,7 +65,7 @@ class VariantController extends Controller
         $variant->save();
         if ($request->images) {
             foreach ($request->images as $key =>$value ) {
-                $variant->gallery()->create(['url'=>sorteimage('storage/product',$value)]);
+                $variant->image()->create(['url'=>sorteimage('storage/product',$value)]);
             }
            }
         foreach ($request->all()  as $key => $value) {
@@ -125,7 +125,7 @@ class VariantController extends Controller
         $variant->save();
         if ($request->images) {
             foreach ($request->images as $key =>$value ) {
-                $variant->gallery()->create(['url'=>sorteimage('storage/product',$value)]);
+                $variant->image()->create(['url'=>sorteimage('storage/product',$value)]);
             }
            }
         

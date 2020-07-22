@@ -45,7 +45,7 @@ class AdditionController extends Controller
             'price'=>'required_if:type,paid'
         ]);
         $product=Product::where('id',$request->product_id)->first();
-        $product->additions->create(['name'=>$request->name,'type'=>$request->type,'price'=>$request->price]);
+        $product->additions()->create(['name'=>$request->name,'type'=>$request->type,'price'=>$request->price]);
         return redirect('/admin/addition');
     }
 
@@ -87,7 +87,7 @@ class AdditionController extends Controller
             'price'=>'required_if:type,paid'
         ]);
         $product=Product::where('id',$request->product_id)->first();
-        $product->additions->create(['name'=>$request->name,'type'=>$request->type,'price'=>$request->price]);
+        $product->additions()->create(['name'=>$request->name,'type'=>$request->type,'price'=>$request->price]);
         return redirect('/admin/addition');
     }
 

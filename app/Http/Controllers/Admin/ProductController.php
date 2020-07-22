@@ -56,7 +56,7 @@ class ProductController extends Controller
         $product->save();
            if ($request->images) {
             foreach ($request->images as $key =>$value ) {
-                $product->gallery()->create(['url'=>sorteimage('storage/product',$value)]);
+                $product->image()->create(['url'=>sorteimage('storage/product',$value)]);
             }
            }
            if ($request->tags) {
@@ -121,7 +121,7 @@ class ProductController extends Controller
         $product->save();
            if ($request->images) {
             foreach ($request->images as $key =>$value ) {
-                $product->gallery()->create(['url'=>sorteimage('storage/product',$value)]);
+                $product->image()->create(['url'=>sorteimage('storage/product',$value)]);
             }
            }
            if ($request->tags) {
