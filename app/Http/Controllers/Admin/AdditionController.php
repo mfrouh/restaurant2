@@ -17,7 +17,8 @@ class AdditionController extends Controller
      */
     public function index()
     {
-        return view('admin.addition.index');
+        $additions=Addition::all();
+        return view('admin.addition.index',compact('additions'));
     }
 
     /**

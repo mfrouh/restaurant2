@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fuild">
-    <a href="/admin/addition/deleteadditions" class="btn btn-danger shadow-sm m-2 btn-sm">العروض المحذوفة</a>
     <div class="card card-primary text-center">
-        <div class="card-header">العروض</div>
+        <div class="card-header">الاضافات</div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>اسم المنتج</th>
-                        <th>نوع العرض</th>
-                        <th>قيمة العرض</th>
+                        <th>اسم الاضافة</th>
+                        <th>نوع الاضافة</th>
+                        <th>السعر</th>
                         <th>#</th>
                     </tr>
                 </thead>
@@ -20,8 +20,9 @@
                     <tr>
                         <td>{{$k+1}}</td>
                         <td>{{$addition->product->name}}</td>
-                        <td>{{typeaddition($addition->type)}}</td>
-                        <td>{{$addition->value}}</td>
+                        <td>{{$addition->name}}</td>
+                        <td>{{$addition->type}}</td>
+                        <td>{{$addition->price}}</td>
                         <td>
                             <a href="/admin/addition/{{$addition->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();
@@ -35,7 +36,7 @@
                     @empty
                     <tr>
                       <td colspan="7">
-                        <h3> لا يوجد عروض</h3>
+                        <h3> لا يوجد اضافات</h3>
                       </td>
                     </tr>
                     @endforelse

@@ -139,19 +139,4 @@ class ValueableController extends Controller
         $valueable->delete();
         return back();
     }
-    public function forcedelete($id)
-    {
-        Valueable::onlyTrashed()->where('id', $id)->forceDelete();
-        return back();
-    }
-    public function restore($id)
-    {
-        Valueable::onlyTrashed()->where('id', $id)->restore();
-        return back();
-    }
-    public function deletevalueables()
-    {
-        $valueables=Valueable::onlyTrashed()->orderby('id','desc')->get();
-        return view('admin.valueable.deletevalueable',compact('valueables'));
-    }
 }

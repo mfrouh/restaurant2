@@ -2,7 +2,6 @@
 @section('content')
 <div class="container-fuild">
     <a href="/admin/attribute/create" class="btn btn-success shadow-sm m-2 btn-sm">انشاء خاصة</a>
-    <a href="/admin/attribute/deleteattributes" class="btn btn-danger shadow-sm m-2 btn-sm">الخصائص المحذوفة</a>
     <div class="card card-primary text-center">
         <div class="card-header">الخصائص</div>
         <div class="card-body">

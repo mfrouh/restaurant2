@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fuild">
-    <a href="/admin/offer/deleteoffers" class="btn btn-danger shadow-sm m-2 btn-sm">العروض المحذوفة</a>
     <div class="card card-primary text-center">
         <div class="card-header">العروض</div>
         <div class="card-body">

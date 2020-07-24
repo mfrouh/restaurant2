@@ -87,6 +87,11 @@
                <i class="nav-icon fas fa-th"></i><p >قيم الخصائص</p>
            </a>
          </li>
+         <li  class="nav-item">
+          <a href="/admin/addition" class="nav-link">
+              <i class="nav-icon fas fa-th"></i><p >الاضافات</p>
+          </a>
+        </li>
          <li  class="nav-item ">
            <a href="/admin/tag" class="nav-link">
                <i class="nav-icon fas fa-tags"></i><p >كلمات لها علاقة</p>
