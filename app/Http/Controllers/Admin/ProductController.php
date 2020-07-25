@@ -43,21 +43,20 @@ class ProductController extends Controller
             'name'=>'required',
             'description'=>'required',
             'active'=>'required|between:0,1',
-            'images'=>'required',
+            'image'=>'required',
             'price'=>'required',
         ]);
         $product=new product();
         $product->category_id=$request->category_id;
         $product->name=$request->name;
+        $product->restaurant_id=auth()->user()->restaurant->id;
         $product->description=$request->description;
         $product->active=$request->active;
         $product->price=$request->price;
-        $product->slug=$request->name.rand(1111,9999);
+        $product->slug=$request->name;
         $product->save();
-           if ($request->images) {
-            foreach ($request->images as $key =>$value ) {
-                $product->image()->create(['url'=>sorteimage('storage/product',$value)]);
-            }
+           if ($request->image) {
+                $product->image()->create(['url'=>sorteimage('storage/product',$request->image)]);
            }
            if ($request->tags) {
             foreach (explode(',',$request->tags) as $key =>$value ) {
@@ -109,20 +108,19 @@ class ProductController extends Controller
             'name'=>'required',
             'description'=>'required',
             'active'=>'required|between:0,1',
-            'images'=>'nullable',
+            'image'=>'nullable',
             'price'=>'required',
         ]);
         $product->category_id=$request->category_id;
         $product->name=$request->name;
+        $product->restaurant_id=auth()->user()->restaurant->id;
         $product->description=$request->description;
         $product->active=$request->active;
         $product->price=$request->price;
         $product->slug=$request->name.rand(1111,9999);
         $product->save();
-           if ($request->images) {
-            foreach ($request->images as $key =>$value ) {
-                $product->image()->create(['url'=>sorteimage('storage/product',$value)]);
-            }
+           if ($request->image) {
+                $product->image()->create(['url'=>sorteimage('storage/product',$request->image)]);
            }
            if ($request->tags) {
             foreach (explode(',',$request->tags) as $key =>$value ) {
