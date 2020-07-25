@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('restaurant_id');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->text('description');
             $table->enum('active',[0,1])->default(0);

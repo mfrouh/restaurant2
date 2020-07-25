@@ -17,13 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix' => 'admin'], function () {
- Route::resource('category', 'Admin\CategoryController');
- Route::resource('product', 'Admin\ProductController');
+ Route::resource('category',  'Admin\CategoryController');
+ Route::resource('product',   'Admin\ProductController');
  Route::resource('attribute', 'Admin\AttributeController');
- Route::resource('offer', 'Admin\OfferController');
- Route::resource('variant', 'Admin\VariantController');
+ Route::resource('offer',     'Admin\OfferController');
+ Route::resource('variant',   'Admin\VariantController');
  Route::resource('valueable', 'Admin\ValueableController');
- Route::resource('addition', 'Admin\AdditionController');
+ Route::resource('addition',  'Admin\AdditionController');
+ Route::resource('restaurant','Admin\RestaurantController');
 
  Route::get('/valueable/create/{product}','Admin\ValueableController@create');
  Route::get('/variant/create/{product}','Admin\VariantController@create');

@@ -20,6 +20,11 @@ class CreateRestaurantsTable extends Migration
             $table->enum('delivery',[0,1])->default(0);
             $table->string('phone');
             $table->string('address');
+            $table->string('description');
+            $table->decimal('price_delivery');
+            $table->integer('time_delivery');
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ function direction($text){
     $files = $req_file_img;
     $file_name =time() . $files->getClientOriginalName();
     $files->move($destinationPath, $file_name);
-    return $file_name;
+    return $despath.'/'.$file_name;
   }
   function active($value)
   {
