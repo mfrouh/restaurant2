@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
-  protected $fillable=['name','description','delivery','address','phone','state'];
+  protected $fillable=['name','description','delivery','address','phone','state','price_delivery','time_delivery'];
 
   public function products()
   {
@@ -22,5 +22,5 @@ class Restaurant extends Model
   {
      return $this->morphOne('App\Image', 'imageable');
   }
-  
+
 }

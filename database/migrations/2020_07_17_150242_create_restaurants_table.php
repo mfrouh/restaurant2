@@ -21,8 +21,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('description');
-            $table->decimal('price_delivery');
-            $table->integer('time_delivery');
+            $table->decimal('price_delivery')->nullable();
+            $table->integer('time_delivery')->nullable();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

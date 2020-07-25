@@ -44,6 +44,9 @@ class RestaurantController extends Controller
             'phone'=>'required|min:11|max:11',
             'state'=>'required|in:open,close',
             'delivery'=>'required|in:0,1',
+            'description'=>'required',
+            'price_delivery'=>'required_if:delivery,1|numeric',
+            'time_delivery'=>'required_if:delivery,1|numeric'
          ]);
          $restaurant=new Restaurant();
          $restaurant->name=$request->name;
@@ -51,6 +54,9 @@ class RestaurantController extends Controller
          $restaurant->phone=$request->phone;
          $restaurant->state=$request->state;
          $restaurant->delivery=$request->delivery;
+         $restaurant->price_delivery=$request->price_delivery;
+         $restaurant->time_delivery=$request->time_delivery;
+         $restaurant->description=$request->description;
          $restaurant->save();
          if ($request->image) {
             $restaurant->image()->create(["url" => sorteimage('storage/restaurant',$request->image)]);
@@ -96,13 +102,18 @@ class RestaurantController extends Controller
             'phone'=>'required|min:11|max:11',
             'state'=>'required|in:open,close',
             'delivery'=>'required|in:0,1',
+            'description'=>'required',
+            'price_delivery'=>'required_if:delivery,1|numeric',
+            'time_delivery'=>'required_if:delivery,1|numeric'
          ]);
-         $restaurant=new Restaurant();
          $restaurant->name=$request->name;
          $restaurant->address=$request->address;
          $restaurant->phone=$request->phone;
          $restaurant->state=$request->state;
          $restaurant->delivery=$request->delivery;
+         $restaurant->price_delivery=$request->price_delivery;
+         $restaurant->time_delivery=$request->time_delivery;
+         $restaurant->description=$request->description;
          $restaurant->save();
          if ($request->image) {
             $restaurant->image()->create(["url" => sorteimage('storage/restaurant',$request->image)]);
