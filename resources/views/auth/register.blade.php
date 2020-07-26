@@ -35,7 +35,7 @@
       <form action="{{route('register')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="name" placeholder="الاسم" style="border-left: 0;">
+          <input type="text" class="form-control" name="name" placeholder="الاسم" style="border-left: 0;" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="البريد الالكتروني" style="border-left: 0;">
+          <input type="email" class="form-control" name="email" placeholder="البريد الالكتروني" style="border-left: 0;" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="كلمة المرور" style="border-left: 0;">
+          <input type="password" class="form-control" name="password" placeholder="كلمة المرور" style="border-left: 0;" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control " name="password_confirmation" placeholder="اعادة كلمة المرور" style="border-left: 0;">
+          <input type="password" class="form-control " name="password_confirmation" placeholder="اعادة كلمة المرور" style="border-left: 0;" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
