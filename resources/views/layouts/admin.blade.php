@@ -73,6 +73,11 @@
            </a>
          </li>
          <li  class="nav-item">
+          <a href="/admin/restaurant" class="nav-link">
+              <i class="nav-icon fas fa-th"></i><p > المطاعم</p>
+          </a>
+        </li>
+         <li  class="nav-item">
            <a href="/admin/product" class="nav-link">
                <i class="nav-icon fas fa-th"></i><p > المنتجات</p>
            </a>
