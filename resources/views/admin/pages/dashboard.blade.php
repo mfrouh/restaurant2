@@ -1,7 +1,10 @@
 @extends('layouts.admin')
+@section('title')
+الرئيسية
+@endsection
 @section('content')
 <div class="container-fuild">
-    <div class="row">
+    <div class="row m-0">
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
             <span class="info-box-icon bg-info elevation-1"><i class="fas  fa-th-large"></i></span>

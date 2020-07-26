@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    الاقسام
+@endsection
 @section('content')
 <div class="container-fuild">
     <a href="/admin/category/create" class="btn btn-success shadow-sm m-2 btn-sm">انشاء قسم</a>

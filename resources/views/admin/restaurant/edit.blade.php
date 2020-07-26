@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    المطاعم
+@endsection
 @section('content')
 <div class="container-fuild">
     <div class="card card-primary">

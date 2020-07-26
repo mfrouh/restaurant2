@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    الانواع
+@endsection
 @section('content')
 <div class="container-fuild">
     <div class="card card-primary text-center">

@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    المنتجات
+@endsection
 @section('content')
 <div class="container-fuild">
     <a href="/admin/product/{{$product->id}}/edit" class="btn btn-success shadow-sm m-2 btn-sm">تعديل منتج</a>

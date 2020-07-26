@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    الانواع
+@endsection
 @section('content')
 <div class="container-fuild">
     <a href="/admin/variant/{{$variant->id}}/edit" class="btn btn-success shadow-sm m-2 btn-sm">تعديل النوع</a>
