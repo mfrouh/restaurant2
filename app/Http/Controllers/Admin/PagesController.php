@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Addition;
+use App\Attribute;
 use App\Http\Controllers\Controller;
+use App\Offer;
 use App\Option;
 use App\Order;
 use App\Order_details;
+use App\Product;
 use App\Tag;
 use App\User;
+use App\Valueable;
+use App\Variant;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -49,5 +54,30 @@ class PagesController extends Controller
     {
         $additions=Addition::all();
         return view('admin.pages.addition',compact('additions'));
+    }
+    public function attribute()
+    {
+        $attributes=Attribute::all();
+        return view('admin.pages.attribute',compact('attributes'));
+    }
+    public function offer()
+    {
+        $offers=Offer::all();
+        return view('admin.pages.offer',compact('offers'));
+    }
+    public function product()
+    {
+        $products=Product::all();
+        return view('admin.pages.product',compact('products'));
+    }
+    public function valueable()
+    {
+        $valueables=Valueable::all();
+        return view('admin.pages.valueable',compact('valueables'));
+    }
+    public function variant()
+    {
+        $variants=Variant::all();
+        return view('admin.pages.variant',compact('variants'));
     }
 }
