@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Addition;
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Option;
 use App\Order;
@@ -44,6 +45,11 @@ class PagesController extends Controller
     {
         $tags=Tag::all();
         return view('manager.pages.tags',compact('tags'));
+    }
+    public function category()
+    {
+        $categories=Category::all();
+        return view('manager.pages.category',compact('categories'));
     }
     
 }

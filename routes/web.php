@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>['auth','checkrole:admin']], function () {
  Route::resource('category',  'Admin\CategoryController');
  Route::resource('restaurant','Admin\RestaurantController');
 
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 });
-Route::group(['prefix' => 'manager'], function () {
+Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager']], function () {
     Route::resource('product',   'Manager\ProductController');
     Route::resource('attribute', 'Manager\AttributeController');
     Route::resource('offer',     'Manager\OfferController');
@@ -47,7 +47,13 @@ Route::group(['prefix' => 'manager'], function () {
     Route::get('/valueable/create/{product}','Manager\ValueableController@create');
     Route::get('/variant/create/{product}','Manager\VariantController@create');
     Route::get('/offer/create/{product}','Manager\OfferController@create');   
+    Route::get('/addition/create/{product}','Manager\AdditionController@create');   
+    Route::get('/addition/create', function (){return abort(404);});
+    Route::get('/variant/create', function (){return abort(404);}); 
+    Route::get('/offer/create', function (){return abort(404);});
+    Route::get('/valueable/create', function (){return abort(404);});
     Route::get('/dashboard','Manager\PagesController@dashboard');
+    Route::get('/category','Manager\PagesController@category');
     Route::get('/clients','Manager\PagesController@clients');
     Route::get('/orders','Manager\PagesController@orders');
     Route::get('/order_details/{id}','Manager\PagesController@order_details');

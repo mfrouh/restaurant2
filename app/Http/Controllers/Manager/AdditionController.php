@@ -26,9 +26,9 @@ class AdditionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        return view('manager.addition.create');
+        return view('manager.addition.create',compact('product'));
     }
 
     /**

@@ -55,71 +55,83 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          {{-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> --}}
+          {{--  <img src="{{auth()->user()->image->url}}" class="img-circle elevation-2" alt="User Image">  --}}
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{auth()->user()->name}}</a>
         </div>
+        
+      </div>
+      <div class="user-panel pb-3 d-flex">
+        <div class="info">
+          <form action="{{route('logout')}}" method="post">
+           @csrf
+           <button type="submit" class="btn btn-primary btn-sm" value=""  role="button">  <i class="fas fa-lock-open"></i> خروج</button>
+          </form>
+        </div>
+        
       </div>
 
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item ">
-            <a href="/admin/dashboard" class="nav-link">
+
+          @auth
+         <li class="nav-item ">
+            <a href="/{{auth()->user()->role}}/dashboard" class="nav-link">
                <i class="nav-icon fas fa-tachometer-alt"></i><p >الرئيسية</p>
             </a>
          </li>
          <li class="nav-item">
-           <a href="/admin/category" class="nav-link">
+           <a href="/{{auth()->user()->role}}/category" class="nav-link">
              <i class="nav-icon fas fa-copy"></i><p > الاقسام</p>
            </a>
          </li>
          <li  class="nav-item">
-          <a href="/admin/restaurant" class="nav-link">
+          <a href="/{{auth()->user()->role}}/restaurant" class="nav-link">
               <i class="nav-icon fas fa-th"></i><p > المطاعم</p>
           </a>
         </li>
          <li  class="nav-item">
-           <a href="/admin/product" class="nav-link">
+           <a href="/{{auth()->user()->role}}/product" class="nav-link">
                <i class="nav-icon fas fa-th"></i><p > المنتجات</p>
            </a>
          </li>
          <li  class="nav-item">
-           <a href="/admin/attribute" class="nav-link">
+           <a href="/{{auth()->user()->role}}/attribute" class="nav-link">
                <i class="nav-icon fas fa-th"></i><p >الخصائص </p>
            </a>
          </li>
          <li  class="nav-item">
-           <a href="/admin/value" class="nav-link">
+           <a href="/{{auth()->user()->role}}/value" class="nav-link">
                <i class="nav-icon fas fa-th"></i><p >قيم الخصائص</p>
            </a>
          </li>
          <li  class="nav-item">
-          <a href="/admin/addition" class="nav-link">
+          <a href="/{{auth()->user()->role}}/addition" class="nav-link">
               <i class="nav-icon fas fa-th"></i><p >الاضافات</p>
           </a>
         </li>
          <li  class="nav-item ">
-           <a href="/admin/tag" class="nav-link">
+           <a href="/{{auth()->user()->role}}/tag" class="nav-link">
                <i class="nav-icon fas fa-tags"></i><p >كلمات لها علاقة</p>
            </a>
          </li>
          <li  class="nav-item ">
-           <a href="/admin/offer" class="nav-link">
+           <a href="/{{auth()->user()->role}}/offer" class="nav-link">
                <i class="nav-icon fas fa-th"></i><p >العروض </p>
            </a>
          </li>
          <li  class="nav-item">
-           <a href="/admin/orders" class="nav-link">
+           <a href="/{{auth()->user()->role}}/orders" class="nav-link">
                <i class="nav-icon fas fa-shopping-cart"></i><p > الطلبات</p>
            </a>
          </li>
          <li  class="nav-item">
-           <a href="/admin/clients" class="nav-link">
+           <a href="/{{auth()->user()->role}}/clients" class="nav-link">
                <i class="nav-icon fas fa-users"></i><p > العملاء</p>
            </a>
          </li>
-         
+         @endauth
         </ul>
       </nav>
     </div>
