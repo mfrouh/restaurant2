@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Addition;
 use App\Http\Controllers\Controller;
 use App\Option;
 use App\Order;
@@ -44,4 +45,5 @@ class PagesController extends Controller
         $tags=Tag::all();
         return view('admin.pages.tags',compact('tags'));
     }
+    
 }
