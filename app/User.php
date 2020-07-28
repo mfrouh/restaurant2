@@ -44,4 +44,8 @@ class User extends Authenticatable
     {
         return $this->morphOne('App\Image', 'imageable');
     }
+    public function restaurant()
+    {
+      return $this->hasOne('App\Restaurant');
+    }
 }

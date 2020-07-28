@@ -16,7 +16,14 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants=Restaurant::all();
-        return view('manager.restaurant.index',compact('restaurants'));
+        if(!auth()->user()->restaurant){
+           return view('manager.restaurant.create');
+        }
+        else
+        {
+            $restaurant=auth()->user()->restaurant;
+            return view('manager.restaurant.edit',compact('restaurant'));
+        }
     }
 
     /**
@@ -57,6 +64,7 @@ class RestaurantController extends Controller
          $restaurant->price_delivery=$request->price_delivery;
          $restaurant->time_delivery=$request->time_delivery;
          $restaurant->description=$request->description;
+         $restaurant->user_id=auth()->user()->id;
          $restaurant->save();
          if ($request->image) {
             $restaurant->image()->create(["url" => sorteimage('storage/restaurant',$request->image)]);
@@ -114,6 +122,7 @@ class RestaurantController extends Controller
          $restaurant->price_delivery=$request->price_delivery;
          $restaurant->time_delivery=$request->time_delivery;
          $restaurant->description=$request->description;
+         $restaurant->user_id=auth()->user()->id;
          $restaurant->save();
          if ($request->image) {
             $restaurant->image()->create(["url" => sorteimage('storage/restaurant',$request->image)]);

@@ -42,7 +42,8 @@ Route::group(['prefix' => 'manager'], function () {
     Route::resource('variant',   'Manager\VariantController');
     Route::resource('valueable', 'Manager\ValueableController');
     Route::resource('addition',  'Manager\AdditionController');
-    Route::resource('restaurant','Manager\RestaurantController');
+    Route::resource('restaurant','Manager\RestaurantController')->except(['edit','show']);
+
     Route::get('/valueable/create/{product}','Manager\ValueableController@create');
     Route::get('/variant/create/{product}','Manager\VariantController@create');
     Route::get('/offer/create/{product}','Manager\OfferController@create');   
