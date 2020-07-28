@@ -18,7 +18,7 @@ class AdditionController extends Controller
     public function index()
     {
         $additions=Addition::all();
-        return view('admin.addition.index',compact('additions'));
+        return view('manager.addition.index',compact('additions'));
     }
 
     /**
@@ -28,7 +28,7 @@ class AdditionController extends Controller
      */
     public function create()
     {
-        return view('admin.addition.create');
+        return view('manager.addition.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class AdditionController extends Controller
         ]);
         $product=Product::where('id',$request->product_id)->first();
         $product->additions()->create(['name'=>$request->name,'type'=>$request->type,'price'=>$request->price]);
-        return redirect('/admin/addition');
+        return redirect('/manager/addition');
     }
 
     /**
@@ -69,7 +69,7 @@ class AdditionController extends Controller
      */
     public function edit(Addition $addition)
     {
-        return view('admin.addition.edit',compact('addition'));
+        return view('manager.addition.edit',compact('addition'));
     }
 
     /**
@@ -89,7 +89,7 @@ class AdditionController extends Controller
         ]);
         $product=Product::where('id',$request->product_id)->first();
         $product->additions()->create(['name'=>$request->name,'type'=>$request->type,'price'=>$request->price]);
-        return redirect('/admin/addition');
+        return redirect('/manager/addition');
     }
 
     /**

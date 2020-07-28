@@ -16,7 +16,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants=Restaurant::all();
-        return view('admin.restaurant.index',compact('restaurants'));
+        return view('manager.restaurant.index',compact('restaurants'));
     }
 
     /**
@@ -26,7 +26,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurant.create');
+        return view('manager.restaurant.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class RestaurantController extends Controller
          if ($request->image) {
             $restaurant->image()->create(["url" => sorteimage('storage/restaurant',$request->image)]);
          }
-         return redirect('/admin/restaurant')->with('succes','Store Restaurant');
+         return redirect('/manager/restaurant')->with('succes','Store Restaurant');
     }
 
     /**
@@ -83,7 +83,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurant.edit',compact('restaurant'));
+        return view('manager.restaurant.edit',compact('restaurant'));
     }
 
     /**
@@ -118,7 +118,7 @@ class RestaurantController extends Controller
          if ($request->image) {
             $restaurant->image()->create(["url" => sorteimage('storage/restaurant',$request->image)]);
          }
-         return redirect('/admin/restaurant')->with('succes','Update Restaurant');
+         return redirect('/manager/restaurant')->with('succes','Update Restaurant');
        
     }
 

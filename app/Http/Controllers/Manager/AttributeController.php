@@ -16,7 +16,7 @@ class AttributeController extends Controller
     public function index()
     {
       $attributes=Attribute::all();
-      return view('admin.attribute.index',compact('attributes'));
+      return view('manager.attribute.index',compact('attributes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        return view('admin.attribute.create');
+        return view('manager.attribute.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class AttributeController extends Controller
         $attribute=new Attribute();
         $attribute->name=$request->name;
         $attribute->save();
-        return redirect('/admin/attribute')->with('success','Store Success');
+        return redirect('/manager/attribute')->with('success','Store Success');
     }
 
     /**
@@ -65,7 +65,7 @@ class AttributeController extends Controller
      */
     public function edit(Attribute $attribute)
     {
-        return view('admin.attribute.edit',compact('attribute'));
+        return view('manager.attribute.edit',compact('attribute'));
     }
 
     /**
@@ -82,7 +82,7 @@ class AttributeController extends Controller
         ]);
         $attribute->name=$request->name;
         $attribute->save();
-        return redirect('/admin/attribute')->with('success','Update Success');
+        return redirect('/manager/attribute')->with('success','Update Success');
     }
 
     /**

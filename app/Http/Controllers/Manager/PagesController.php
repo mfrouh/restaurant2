@@ -15,35 +15,35 @@ class PagesController extends Controller
 {
     public function dashboard()
     {
-      return view('admin.pages.dashboard');
+      return view('manager.pages.dashboard');
     }
 
     public function orders()
     {
         $orders=Order::all();
-        return view('admin.pages.orders',compact('orders'));
+        return view('manager.pages.orders',compact('orders'));
     }
 
     public function order_details($id)
     {
         $order_details=Order_details::where('order_id',$id)->get();
-        return view('admin.pages.order_details',compact('order_details'));
+        return view('manager.pages.order_details',compact('order_details'));
     }
 
     public function clients()
     {
         $clients=User::all();
-        return view('admin.pages.clients',compact('clients'));
+        return view('manager.pages.clients',compact('clients'));
     }
     public function value()
     {
         $values=Option::all();
-        return view('admin.pages.value',compact('values'));
+        return view('manager.pages.value',compact('values'));
     }
     public function tag()
     {
         $tags=Tag::all();
-        return view('admin.pages.tags',compact('tags'));
+        return view('manager.pages.tags',compact('tags'));
     }
     
 }

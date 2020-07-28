@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products=Product::all();
-        return view('admin.product.index',compact('products'));
+        return view('manager.product.index',compact('products'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        return view('manager.product.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class ProductController extends Controller
             }
             $product->tags()->sync($arr);
            }
-        return redirect('/admin/product');
+        return redirect('/manager/product');
     }
 
     /**
@@ -80,7 +80,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-       return view('admin.product.show',compact('product'));
+       return view('manager.product.show',compact('product'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.product.edit',compact('product'));
+        return view('manager.product.edit',compact('product'));
     }
 
     /**
@@ -133,7 +133,7 @@ class ProductController extends Controller
             }
             $product->tags()->sync($arr);
            }
-        return redirect('/admin/product');
+        return redirect('/manager/product');
     }
 
     /**

@@ -17,7 +17,7 @@ class OfferController extends Controller
     public function index()
     {
         $offers=Offer::all();
-        return view('admin.offer.index',compact('offers'));
+        return view('manager.offer.index',compact('offers'));
     }
 
     /**
@@ -27,7 +27,7 @@ class OfferController extends Controller
      */
     public function create(Product $product)
     {
-        return view('admin.offer.create',compact('product'));
+        return view('manager.offer.create',compact('product'));
     }
 
     /**
@@ -52,7 +52,7 @@ class OfferController extends Controller
         $offer->start=$request->start;
         $offer->end=$request->end;
         $offer->save();
-        return redirect('/admin/offer')->with('success','Store Offer');
+        return redirect('/manager/offer')->with('success','Store Offer');
     }
 
     /**
@@ -74,7 +74,7 @@ class OfferController extends Controller
      */
     public function edit(Offer $offer)
     {
-        return view('admin.offer.edit',compact('offer'));
+        return view('manager.offer.edit',compact('offer'));
     }
 
     /**
@@ -99,7 +99,7 @@ class OfferController extends Controller
         $offer->start=$request->start;
         $offer->end=$request->end;
         $offer->save();
-        return redirect('/admin/offer')->with('success','Update Offer');
+        return redirect('/manager/offer')->with('success','Update Offer');
     }
 
     /**

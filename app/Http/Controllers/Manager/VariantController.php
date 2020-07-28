@@ -18,7 +18,7 @@ class VariantController extends Controller
     public function index()
     {
         $variants=variant::all();
-        return view('admin.variant.index',compact('variants'));
+        return view('manager.variant.index',compact('variants'));
     }
 
     /**
@@ -28,7 +28,7 @@ class VariantController extends Controller
      */
     public function create(Product $product)
     {
-        return view('admin.variant.create',compact('product'));
+        return view('manager.variant.create',compact('product'));
     }
 
 
@@ -69,7 +69,7 @@ class VariantController extends Controller
                DB::insert('insert into variant_valueable (variant_id,valueable_id) values (?, ?)', [$variant->id,$value]);
             }
         }
-            return redirect('/admin/variant')->with('success','تمت الاضافة');
+            return redirect('/manager/variant')->with('success','تمت الاضافة');
         }
         else
         {
@@ -87,7 +87,7 @@ class VariantController extends Controller
      */
     public function show(Variant $variant)
     {
-        return view('admin.variant.show',compact('variant'));
+        return view('manager.variant.show',compact('variant'));
     }
 
     /**
@@ -98,7 +98,7 @@ class VariantController extends Controller
      */
     public function edit(Variant $variant)
     {
-        return view('admin.variant.edit',compact('variant'));
+        return view('manager.variant.edit',compact('variant'));
     }
 
     /**

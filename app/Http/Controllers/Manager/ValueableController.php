@@ -19,7 +19,7 @@ class ValueableController extends Controller
     public function index()
     {
         $valueables=valueable::all();
-        return view('admin.valueable.index',compact('valueables'));
+        return view('manager.valueable.index',compact('valueables'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ValueableController extends Controller
      */
     public function create(Product $product)
     {
-        return view('admin.valueable.create',compact('product'));
+        return view('manager.valueable.create',compact('product'));
     }
 
 
@@ -60,7 +60,7 @@ class ValueableController extends Controller
             $valueable->attribute_id=$request->attribute_id;
             $valueable->option_id=$option->id;
             $valueable->save();
-            return redirect('/admin/valueable');
+            return redirect('/manager/valueable');
         }
         else
         {
@@ -87,7 +87,7 @@ class ValueableController extends Controller
      */
     public function edit(valueable $valueable)
     {
-        return view('admin.valueable.edit',compact('valueable'));
+        return view('manager.valueable.edit',compact('valueable'));
     }
 
     /**
@@ -117,7 +117,7 @@ class ValueableController extends Controller
             $valueable->attribute_id=$request->attribute_id;
             $valueable->option_id=$option->id;
             $valueable->save();
-            return redirect('/admin/valueable');
+            return redirect('/manager/valueable');
         }
         else
         {
