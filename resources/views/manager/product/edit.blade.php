@@ -8,7 +8,7 @@
 
      <div class="card-header ">تعديل منتج</div>
      <div class="card-body">
-       <form action="/admin/product/{{$product->id}}" method="post" enctype="multipart/form-data">
+       <form action="/manager/product/{{$product->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
          <div class="form-group ">

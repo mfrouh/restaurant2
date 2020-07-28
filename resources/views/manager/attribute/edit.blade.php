@@ -7,7 +7,7 @@
    <div class="card card-primary">
      <div class="card-header ">تعديل خاصة</div>
      <div class="card-body">
-       <form action="/admin/attribute/{{$attribute->id}}" method="post" enctype="multipart/form-data">
+       <form action="/manager/attribute/{{$attribute->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
          <div class="form-group">

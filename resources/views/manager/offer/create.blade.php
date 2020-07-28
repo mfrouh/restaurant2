@@ -8,7 +8,7 @@
 
      <div class="card-header ">انشاء عرض</div>
      <div class="card-body">
-       <form action="/admin/offer" method="post">
+       <form action="/manager/offer" method="post">
         @csrf
         <div class="form-group text-center col-12  ">
            <img src="{{asset($product->image->url)}}" height="100px" width="100px" class="img-circle shadow-sm mb-1" alt="">

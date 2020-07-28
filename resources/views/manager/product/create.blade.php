@@ -8,7 +8,7 @@
 
      <div class="card-header ">انشاء منتج</div>
      <div class="card-body">
-       <form action="/admin/product" method="post" enctype="multipart/form-data">
+       <form action="/manager/product" method="post" enctype="multipart/form-data">
         @csrf
          <div class="form-group">
            <label for="">اسم المنتج</label>

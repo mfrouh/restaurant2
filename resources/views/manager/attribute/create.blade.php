@@ -7,7 +7,7 @@
    <div class="card card-primary">
      <div class="card-header ">انشاء خاصة</div>
      <div class="card-body">
-       <form action="/admin/attribute" method="post">
+       <form action="/manager/attribute" method="post">
         @csrf
          <div class="form-group ">
            <label for="">اسم الخاصة</label>

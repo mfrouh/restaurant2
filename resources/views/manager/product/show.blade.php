@@ -4,10 +4,10 @@
 @endsection
 @section('content')
 <div class="container-fuild">
-    <a href="/admin/product/{{$product->id}}/edit" class="btn btn-success shadow-sm m-2 btn-sm">تعديل منتج</a>
-    <a class="btn btn-info btn-sm" href="/admin/offer/create/{{$product->id}}"><i class="fa fa-plus" aria-hidden="true"></i> اضافة عرض</a>
-    <a class="btn btn-dark btn-sm" href="/admin/valueable/create/{{$product->id}}"><i class="fa fa-plus" aria-hidden="true"></i> اضافة خصائص</a>
-    <a class="btn btn-secondary btn-sm" href="/admin/variant/create/{{$product->id}}"><i class="fa fa-plus" aria-hidden="true"></i> اضافة نوع</a>
+    <a href="/manager/product/{{$product->id}}/edit" class="btn btn-success shadow-sm m-2 btn-sm">تعديل منتج</a>
+    <a class="btn btn-info btn-sm" href="/manager/offer/create/{{$product->id}}"><i class="fa fa-plus" aria-hidden="true"></i> اضافة عرض</a>
+    <a class="btn btn-dark btn-sm" href="/manager/valueable/create/{{$product->id}}"><i class="fa fa-plus" aria-hidden="true"></i> اضافة خصائص</a>
+    <a class="btn btn-secondary btn-sm" href="/manager/variant/create/{{$product->id}}"><i class="fa fa-plus" aria-hidden="true"></i> اضافة نوع</a>
     <div class="card card-warning ">
         <div class="card-header ">معلومات عن المنتج</div>
         <div class="card-body">
@@ -67,10 +67,10 @@
                         <td>{{$variant->price}} جنية</td>
                         <td>{{$variant->qty}}</td>
                         <td>
-                            <a href="/admin/variant/{{$variant->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="/manager/variant/{{$variant->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();
                               document.getElementById('delete-variant-{{$variant->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
-                              <form id="delete-variant-{{$variant->id}}" action="/admin/variant/{{$variant->id}}" method="post" style="display: none;">
+                              <form id="delete-variant-{{$variant->id}}" action="/manager/variant/{{$variant->id}}" method="post" style="display: none;">
                                 @csrf
                                 @method("DELETE")
                               </form>
@@ -112,10 +112,10 @@
                         <td>{{$product->offer->start_offer}}</td>
                         <td>{{$product->offer->end_offer}}</td>
                         <td>
-                            <a href="/admin/offer/{{$product->offer->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="/manager/offer/{{$product->offer->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();
                               document.getElementById('delete-offer-{{$product->offer->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
-                              <form id="delete-offer-{{$product->offer->id}}" action="/admin/offer/{{$product->offer->id}}" method="post" style="display: none;">
+                              <form id="delete-offer-{{$product->offer->id}}" action="/manager/offer/{{$product->offer->id}}" method="post" style="display: none;">
                                 @csrf
                                 @method("DELETE")
                               </form>

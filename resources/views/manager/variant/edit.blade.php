@@ -7,11 +7,11 @@
    <div class="card card-primary">
      <div class="card-header ">تعديل نوع</div>
      <div class="card-body">
-       <form action="/admin/variant/{{$variant->id}}" method="post" enctype="multipart/form-data">
+       <form action="/manager/variant/{{$variant->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="form-group text-center col-12  ">
-          <img src="{{asset('/storage/product')}}/{{$variant->product->image->url}}" height="100px" width="100px" class="img-circle shadow-sm mb-1" alt="">
+          <img src="{{asset($variant->product->image->url)}}" height="100px" width="100px" class="img-circle shadow-sm mb-1" alt="">
           <br>
            <span class="badge-danger p-1 shadow-sm">{{$variant->product->name}}</span>
         </div>

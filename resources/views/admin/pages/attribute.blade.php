@@ -1,38 +1,30 @@
 @extends('layouts.admin')
 @section('title')
-    الانواع
+    الخصائص
 @endsection
 @section('content')
 <div class="container-fuild">
     <div class="card card-primary text-center">
-        <div class="card-header">الانواع</div>
+        <div class="card-header">الخصائص</div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>صورة المنتج</th>
-                        <th>اسم المنتج</th>
-                        <th>السعر</th>
-                        <th>الكمية</th>
+                        <th>اسم الخاصة</th>
                         <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($variants as $k=> $variant)
+                    @forelse ($attributes as $k=> $attribute)
                     <tr>
                         <td>{{$k+1}}</td>
+                        <td>{{$attribute->name}}</td>
                         <td>
-                            <img src="{{asset($variant->product->image->url)}}" height="50px" width="50px" alt="">
-                        </td>
-                        <td>{{$variant->product->name}}</td>
-                        <td>{{$variant->price}}</td>
-                        <td>{{$variant->qty}}</td>
-                        <td>
-                            <a href="/manager/variant/{{$variant->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="/manager/attribute/{{$attribute->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();
-                              document.getElementById('delete-variant-{{$variant->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
-                              <form id="delete-variant-{{$variant->id}}" action="/manager/variant/{{$variant->id}}" method="post" style="display: none;">
+                              document.getElementById('delete-attribute-{{$attribute->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
+                              <form id="delete-attribute-{{$attribute->id}}" action="/manager/attribute/{{$attribute->id}}" method="post" style="display: none;">
                                 @csrf
                                 @method("DELETE")
                               </form>

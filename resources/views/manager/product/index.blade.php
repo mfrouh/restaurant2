@@ -4,8 +4,8 @@
 @endsection
 @section('content')
 <div class="container-fuild">
-    <a href="/admin/product/create" class="btn btn-success shadow-sm m-2 btn-sm">انشاء منتج</a>
-    <a href="/admin/product/deleteproducts" class="btn btn-danger shadow-sm m-2 btn-sm">المنتجات المحذوفة</a>
+    <a href="/manager/product/create" class="btn btn-success shadow-sm m-2 btn-sm">انشاء منتج</a>
+    <a href="/manager/product/deleteproducts" class="btn btn-danger shadow-sm m-2 btn-sm">المنتجات المحذوفة</a>
     <div class="card card-primary text-center">
         <div class="card-header">المنتجات</div>
         <div class="card-body">
@@ -33,11 +33,11 @@
                         <td>{{active($product->active)}}</td>
                         <td>{{$product->category->name}}</td>
                         <td>
-                            <a href="/admin/product/{{$product->id}}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
-                            <a href="/admin/product/{{$product->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="/manager/product/{{$product->id}}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
+                            <a href="/manager/product/{{$product->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();
                               document.getElementById('delete-product-{{$product->id}}').submit();" href="#"><i class="fas fa-trash"></i></a>
-                              <form id="delete-product-{{$product->id}}" action="/admin/product/{{$product->id}}" method="post" style="display: none;">
+                              <form id="delete-product-{{$product->id}}" action="/manager/product/{{$product->id}}" method="post" style="display: none;">
                                 @csrf
                                 @method("DELETE")
                               </form>

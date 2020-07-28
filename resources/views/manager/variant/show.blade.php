@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="container-fuild">
-    <a href="/admin/variant/{{$variant->id}}/edit" class="btn btn-success shadow-sm m-2 btn-sm">تعديل النوع</a>
+    <a href="/manager/variant/{{$variant->id}}/edit" class="btn btn-success shadow-sm m-2 btn-sm">تعديل النوع</a>
     <div class="card card-warning text-right">
         <div class="card-header ">معلومات عن النوع</div>
         <div class="card-body">
