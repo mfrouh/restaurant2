@@ -18,17 +18,7 @@ Route::get('/', function () {
 });
 Route::group(['prefix' => 'admin'], function () {
  Route::resource('category',  'Admin\CategoryController');
- Route::resource('product',   'Admin\ProductController');
- Route::resource('attribute', 'Admin\AttributeController');
- Route::resource('offer',     'Admin\OfferController');
- Route::resource('variant',   'Admin\VariantController');
- Route::resource('valueable', 'Admin\ValueableController');
- Route::resource('addition',  'Admin\AdditionController');
  Route::resource('restaurant','Admin\RestaurantController');
-
- Route::get('/valueable/create/{product}','Admin\ValueableController@create');
- Route::get('/variant/create/{product}','Admin\VariantController@create');
- Route::get('/offer/create/{product}','Admin\OfferController@create');
 
  Route::get('/dashboard','Admin\PagesController@dashboard');
  Route::get('/clients','Admin\PagesController@clients');
@@ -36,6 +26,37 @@ Route::group(['prefix' => 'admin'], function () {
  Route::get('/order_details/{id}','Admin\PagesController@order_details');
  Route::get('/value','Admin\PagesController@value');
  Route::get('/tag','Admin\PagesController@tag');
+ Route::get('/product',   'Admin\PagesController@product');
+ Route::get('/attribute', 'Admin\PagesController@attribute');
+ Route::get('/offer',     'Admin\PagesController@offer');
+ Route::get('/variant',   'Admin\PagesController@variant');
+ Route::get('/valueable', 'Admin\PagesController@valueable');
+ Route::get('/addition',  'Admin\PagesController@addition');
+
+
+});
+Route::group(['prefix' => 'manager'], function () {
+    Route::resource('product',   'Manager\ProductController');
+    Route::resource('attribute', 'Manager\AttributeController');
+    Route::resource('offer',     'Manager\OfferController');
+    Route::resource('variant',   'Manager\VariantController');
+    Route::resource('valueable', 'Manager\ValueableController');
+    Route::resource('addition',  'Manager\AdditionController');
+    Route::resource('restaurant','Manager\RestaurantController');
+    Route::get('/valueable/create/{product}','Manager\ValueableController@create');
+    Route::get('/variant/create/{product}','Manager\VariantController@create');
+    Route::get('/offer/create/{product}','Manager\OfferController@create');   
+    Route::get('/dashboard','Manager\PagesController@dashboard');
+    Route::get('/clients','Manager\PagesController@clients');
+    Route::get('/orders','Manager\PagesController@orders');
+    Route::get('/order_details/{id}','Manager\PagesController@order_details');
+    Route::get('/value','Manager\PagesController@value');
+    Route::get('/tag','Manager\PagesController@tag');
+});
+Route::group(['prefix' => 'chef'], function () {
+
+});
+Route::group(['prefix' => 'client'], function () {
 
 });
 

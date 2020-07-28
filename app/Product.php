@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable=['category_id','name','price','description','slug','active'];
+    protected $fillable=['restaurant_id','category_id','name','price','description','slug','active'];
 
+    public function restaurant()
+    {
+        return $this->belongsTo('App\Restaurant');
+    }
     public function gallery()
     {
         return $this->morphMany('App\Image', 'imageable');

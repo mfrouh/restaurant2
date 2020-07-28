@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Option;
@@ -15,10 +15,7 @@ class ValueableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth','role:admin']);
-    // }
+
     public function index()
     {
         $valueables=valueable::all();

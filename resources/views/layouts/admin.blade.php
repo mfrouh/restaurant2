@@ -28,6 +28,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Bootstrap 4 RTL -->
   <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
   <!-- Custom style for RTL -->
   <link rel="stylesheet" href="/css/custom.css">
 </head>
@@ -45,7 +47,7 @@
     <a href="index3.html" class="brand-link">
       {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">Restaurant 2</span>
+      <span class="brand-text font-weight-light">المطعم 2</span>
     </a>
 
     <!-- Sidebar -->
@@ -123,7 +125,8 @@
     </div>
   </aside>
   <div class="content-wrapper">
-    <section class="content p-2">
+    <section class="content p-2" id="app">
+       <product></product>
        @yield('content')
     </section>
   </div>
