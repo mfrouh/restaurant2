@@ -120,7 +120,7 @@ class ProductController extends Controller
         $product->slug=$request->name.rand(1111,9999);
         $product->save();
            if ($request->image) {
-                $product->image()->create(['url'=>sorteimage('storage/product',$request->image)]);
+                $product->image()->update(['url'=>sorteimage('storage/product',$request->image)]);
            }
            if ($request->tags) {
             foreach (explode(',',$request->tags) as $key =>$value ) {

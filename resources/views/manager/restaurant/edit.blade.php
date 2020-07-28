@@ -10,7 +10,10 @@
           <form action="/manager/restaurant/{{$restaurant->id}}" method="post" enctype="multipart/form-data">
            @csrf
            @method('PUT')
-           <div class="row">  
+           <div class="row"> 
+            <div class="form-group col-12 text-center">
+                <img src="{{asset($restaurant->image->url)}}" class="shadow-sm" height="100px" width="100px" alt=""> 
+            </div>
            <div class="form-group col-4">
             <label for="">اسم المطعم</label>
             <input type="text" name="name" id="" class="form-control" value="{{$restaurant->name}}" placeholder="اسم المطعم">

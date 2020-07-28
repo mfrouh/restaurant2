@@ -121,7 +121,7 @@ class VariantController extends Controller
         $variant->save();
         if ($request->images) {
             foreach ($request->images as $key =>$value ) {
-                $variant->image()->create(['url'=>sorteimage('storage/product',$value)]);
+                $variant->image()->update(['url'=>sorteimage('storage/product',$value)]);
             }
            }
         
