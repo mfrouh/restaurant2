@@ -22,7 +22,7 @@
          <div class="row">
            <div class="form-group col-4">
               <label for="">صور المنتج</label>
-              <input type="file" name="images[]" class="form-control" multiple>
+              <input type="file" name="image" class="form-control">
            </div>
            <div class="form-group col-4">
               <label for=""> هل المنتج متاح</label><br>

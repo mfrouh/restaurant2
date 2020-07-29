@@ -32,11 +32,11 @@
            <div class="row">
              <div class="form-group col-6 ">
                <label for="">بدايةالعرض</label>
-               <input type="datetime-local" name="start_offer" value="{{$offer->start_offer}}" class="form-control" >
+               <input type="datetime-local" name="start" value="{{$offer->start}}" class="form-control" >
              </div>
              <div class="form-group col-6 ">
                 <label for="">نهاية العرض</label>
-                <input type="datetime-local" name="end_offer" value="{{$offer->end_offer}}" class="form-control">
+                <input type="datetime-local" name="end" value="{{$offer->end}}" class="form-control">
               </div>
            </div>
            <div class="form-group">

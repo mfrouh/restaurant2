@@ -26,8 +26,8 @@
                         <td>{{$offer->product->name}}</td>
                         <td>{{typeoffer($offer->type)}}</td>
                         <td>{{$offer->value}}</td>
-                        <td>{{$offer->start_offer}}</td>
-                        <td>{{$offer->end_offer}}</td>
+                        <td>{{$offer->start}}</td>
+                        <td>{{$offer->end}}</td>
                         <td>
                             <a href="/manager/offer/{{$offer->id}}/edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-outline-danger brdrd btn-sm" onclick="event.preventDefault();

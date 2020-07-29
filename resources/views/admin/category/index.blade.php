@@ -25,7 +25,7 @@
                         <td>{{$k+1}}</td>
                         <td>{{$category->name}}</td>
                         <td>
-                            <img src="{{asset('/storage/category')}}/{{$category->image}}" height="70px" width="70px" alt="">
+                            <img src="{{asset($category->image->url)}}" height="70px" width="70px" alt="">
                         </td>
                         <td>{{active($category->active)}}</td>
                         <td>

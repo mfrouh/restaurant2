@@ -48,8 +48,8 @@ class CategoryController extends Controller
         $category->active=$request->active;
         $category->parent_id=$request->parent_id;
         $category->save();
-        if ($category->image) {
-            // $category->image->create(['url'=>]);
+        if ($request->image) {
+             $category->image()->create(['url'=>sorteimage('storage/category',$request->image)]);
         }
         return redirect('/admin/category')->with('success','Store Success');
     }
@@ -95,8 +95,8 @@ class CategoryController extends Controller
         $category->active=$request->active;
         $category->parent_id=$request->parent_id;
         $category->save();
-        if ($category->image) {
-            // $category->image->create(['url'=>]);
+        if ($request->image) {
+            $category->image()->update(['url'=>sorteimage('storage/category',$request->image)]);
         }
         return redirect('/admin/category')->with('success','Update Success');
        

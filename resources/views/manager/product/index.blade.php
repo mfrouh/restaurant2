@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{$k+1}}</td>
                         <td>
-                            <img src="{{asset('/storage/product/'.$product->image->url)}}" height="50px" width="50px" alt="">
+                            <img src="{{asset($product->image->url)}}" height="50px" width="50px" alt="">
                         </td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->price}} جنية </td>
