@@ -16,9 +16,17 @@ class Product extends Model
     {
         return $this->morphMany('App\Image', 'imageable');
     }
-    public function additions()
+    public function addition()
     {
         return $this->morphMany('App\Addition', 'additionable');
+    }
+    public function rate()
+    {
+        return $this->morphMany('App\Rate', 'rateable');
+    }
+    public function review()
+    {
+        return $this->morphMany('App\Review', 'reviewable');
     }
     public function image()
     {

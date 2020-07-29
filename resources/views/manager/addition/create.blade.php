@@ -11,14 +11,14 @@
        <form action="/manager/addition" method="post">
         @csrf
         <div class="form-group text-center col-12  ">
-           <img src="{{asset($product->image)}}" height="100px" width="100px" class="img-circle shadow-sm mb-1" alt="">
+           <img src="{{asset($product->image->url)}}" height="100px" width="100px" class="img-circle shadow-sm mb-1" alt="">
            <br>
             <span class="badge-danger p-1 shadow-sm">{{$product->name}}</span>
         </div>
         <div class="row">
          <div class="form-group col-4 ">
             <label for="">الاسم </label>
-            <input type="number"  name="name" class="form-control">
+            <input type="text"  name="name" class="form-control">
          </div>
          <div class="form-group col-4 ">
             <input type="hidden" name="product_id" value="{{$product->id}}">

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rate extends Model
 {
-    public function product()
+    public function rateable()
     {
-        return $this->belongsTo('App\Product');
+        return $this->morphTo('');
     }
 }

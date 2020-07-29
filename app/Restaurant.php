@@ -23,4 +23,15 @@ class Restaurant extends Model
      return $this->morphOne('App\Image', 'imageable');
   }
 
+  public function rate()
+  {
+      return $this->morphMany('App\Rate', 'rateable');
+  }
+  
+  public function review()
+  {
+      return $this->morphMany('App\Review', 'reviewable');
+  }
+
+
 }

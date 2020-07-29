@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    public function product()
+    public function reviewable()
     {
-        return $this->belongsTo('App\Product');
+        return $this->morphTo('');
     }
 }

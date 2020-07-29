@@ -22,7 +22,7 @@
                     @forelse ($additions as $k=> $addition)
                     <tr>
                         <td>{{$k+1}}</td>
-                        <td>{{$addition->product->name}}</td>
+                        <td>{{$addition->additionable->name}}</td>
                         <td>{{$addition->name}}</td>
                         <td>{{$addition->type}}</td>
                         <td>{{$addition->price}}</td>

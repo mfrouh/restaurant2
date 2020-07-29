@@ -18,7 +18,6 @@ class CreateVariantsTable extends Migration
             $table->foreignId('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('price');
-            $table->integer('qty');
             $table->string('sku')->unique();
             $table->timestamps();
         });
