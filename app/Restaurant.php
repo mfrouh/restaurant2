@@ -27,10 +27,14 @@ class Restaurant extends Model
   {
       return $this->morphMany('App\Rate', 'rateable');
   }
-  
+
   public function review()
   {
       return $this->morphMany('App\Review', 'reviewable');
+  }
+  public function employees()
+  {
+      return $this->hasMany('App\Employee');
   }
 
 

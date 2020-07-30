@@ -59,6 +59,17 @@ Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager']],
     Route::get('/order_details/{id}','Manager\PagesController@order_details');
     Route::get('/value','Manager\PagesController@value');
     Route::get('/tag','Manager\PagesController@tag');
+    Route::get('/employee','Manager\ManagerController@employee');
+    Route::get('/addemployee','Manager\ManagerController@addemployee');
+    Route::post('/employee','Manager\ManagerController@store');
+    Route::put('/employee/{user}','Manager\ManagerController@update');
+    Route::delete('/employee/{user}','Manager\ManagerController@destroy');
+    Route::delete('/changepassword/{user}','Manager\ManagerController@changepassword');
+    Route::delete('/block/{user}','Manager\ManagerController@block');
+
+
+
+
 });
 Route::group(['prefix' => 'chef'], function () {
 
