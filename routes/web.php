@@ -36,13 +36,16 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','checkrole:admin']], fun
 
 });
 Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager']], function () {
+    Route::resource('restaurant','Manager\RestaurantController')->except(['edit','show','create']);
+
+});
+Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager','HasRestaurant']], function () {
     Route::resource('product',   'Manager\ProductController');
     Route::resource('attribute', 'Manager\AttributeController');
     Route::resource('offer',     'Manager\OfferController');
     Route::resource('variant',   'Manager\VariantController');
     Route::resource('valueable', 'Manager\ValueableController');
     Route::resource('addition',  'Manager\AdditionController');
-    Route::resource('restaurant','Manager\RestaurantController')->except(['edit','show']);
 
     Route::get('/valueable/create/{product}','Manager\ValueableController@create');
     Route::get('/variant/create/{product}','Manager\VariantController@create');
@@ -60,14 +63,13 @@ Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager']],
     Route::get('/value','Manager\PagesController@value');
     Route::get('/tag','Manager\PagesController@tag');
     Route::get('/employee','Manager\ManagerController@employee');
+    Route::get('/employee/{user}/edit','Manager\ManagerController@edit');
     Route::get('/addemployee','Manager\ManagerController@addemployee');
     Route::post('/employee','Manager\ManagerController@store');
     Route::put('/employee/{user}','Manager\ManagerController@update');
     Route::delete('/employee/{user}','Manager\ManagerController@destroy');
-    Route::delete('/changepassword/{user}','Manager\ManagerController@changepassword');
-    Route::delete('/block/{user}','Manager\ManagerController@block');
-
-
+    Route::get('/changepassword/{user}','Manager\ManagerController@changepassword');
+    Route::get('/block/{user}','Manager\ManagerController@block');
 
 
 });

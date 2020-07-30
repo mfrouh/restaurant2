@@ -11,6 +11,11 @@
     <div class="card card-warning ">
         <div class="card-header ">معلومات عن المنتج</div>
         <div class="card-body">
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                   <img src="{{asset($product->image->url)}}" class="shadow-sm" height="100px" width="100px" alt="">
+                </div>
+            </div>
             <div class="row mb-2">
                 <div class="col-3">اسم المنتج </div> <div class="col-3"> {{$product->name}}</div>
                 <div class="col-3">اسم القسم</div> <div class="col-3"> <a  class="btn btn-sm btn-primary">{{$product->category->name}}</a></div>
@@ -34,14 +39,6 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card card-success">
-        <div class="card-header ">صور المنتج</div>
-        <div class="card-body">
-            @foreach ($product->gallery as $image)
-                <img src="{{asset('/storage/product')}}/{{$image->url}}" class=" shadow-sm m-2" alt="" height="100px" width="100px">
-            @endforeach
         </div>
     </div>
     <div class="card card-primary text-center">

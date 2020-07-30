@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{$k+1}}</td>
                         <td>
-                            <img src="{{asset('/storage/user')}}/{{$user->image}}" class="img-circle" height="70px" width="70px" alt="">
+                            <img src="{{asset($user->image->url)}}" class="img-circle" height="70px" width="70px" alt="">
                         </td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
