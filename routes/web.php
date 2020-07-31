@@ -46,6 +46,9 @@ Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager','H
     Route::resource('variant',   'Manager\VariantController');
     Route::resource('valueable', 'Manager\ValueableController');
     Route::resource('addition',  'Manager\AdditionController');
+    Route::resource('employee',  'Manager\EmployeeController',['parameters' => [
+        'employee' => 'user'
+    ]]);
 
     Route::get('/valueable/create/{product}','Manager\ValueableController@create');
     Route::get('/variant/create/{product}','Manager\VariantController@create');
@@ -62,12 +65,6 @@ Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager','H
     Route::get('/order_details/{id}','Manager\PagesController@order_details');
     Route::get('/value','Manager\PagesController@value');
     Route::get('/tag','Manager\PagesController@tag');
-    Route::get('/employee','Manager\ManagerController@employee');
-    Route::get('/employee/{user}/edit','Manager\ManagerController@edit');
-    Route::get('/addemployee','Manager\ManagerController@addemployee');
-    Route::post('/employee','Manager\ManagerController@store');
-    Route::put('/employee/{user}','Manager\ManagerController@update');
-    Route::delete('/employee/{user}','Manager\ManagerController@destroy');
     Route::get('/changepassword/{user}','Manager\ManagerController@changepassword');
     Route::get('/block/{user}','Manager\ManagerController@block');
 

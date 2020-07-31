@@ -134,6 +134,11 @@
                <i class="nav-icon fas fa-users"></i><p > العملاء</p>
            </a>
          </li>
+         <li  class="nav-item">
+          <a href="/{{auth()->user()->role}}/employee" class="nav-link">
+              <i class="nav-icon fas fa-users"></i><p >الموظفين</p>
+          </a>
+        </li>
          @endauth
         </ul>
       </nav>
