@@ -65,7 +65,6 @@ Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager','H
     Route::get('/order_details/{id}','Manager\PagesController@order_details');
     Route::get('/value','Manager\PagesController@value');
     Route::get('/tag','Manager\PagesController@tag');
-    Route::get('/changepassword/{user}','Manager\ManagerController@changepassword');
     Route::get('/block/{user}','Manager\ManagerController@block');
 
 
@@ -79,4 +78,6 @@ Route::group(['prefix' => 'client'], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/setting', 'HomeController@setting');
+Route::post('/changepassword','HomeController@changepassword');
+Route::post('/changeinformation','HomeController@changeinformation');

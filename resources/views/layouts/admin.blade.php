@@ -139,6 +139,11 @@
               <i class="nav-icon fas fa-users"></i><p >الموظفين</p>
           </a>
         </li>
+        <li  class="nav-item">
+          <a href="/setting" class="nav-link">
+              <i class="nav-icon fas fa-th"></i><p >الاعدادت</p>
+          </a>
+        </li>
          @endauth
         </ul>
       </nav>

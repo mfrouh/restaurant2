@@ -21,7 +21,7 @@ class PagesController extends Controller
 
     public function orders()
     {
-        $orders=Order::all();
+        $orders=Order::where('restaurant_id',auth()->user()->restaurant->id)->get();
         return view('manager.pages.orders',compact('orders'));
     }
 
@@ -33,7 +33,7 @@ class PagesController extends Controller
 
     public function clients()
     {
-        $clients=User::all();
+        $clients=User::where('role','client')->get();
         return view('manager.pages.clients',compact('clients'));
     }
     public function value()

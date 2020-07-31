@@ -10,4 +10,8 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function restaurant()
+    {
+        return $this->belongsTo('App\Restaurant');
+    }
 }
