@@ -23,7 +23,9 @@
                     <tr>
                         <td>{{$k+1}}</td>
                         <td>
-                            <img src="{{asset('/storage/order')}}/{{$order->product->image}}" height="70px" width="70px" alt="">
+                            @if ($order->product)
+                              <img src="{{asset($order->product->image)}}" height="70px" width="70px" alt="">
+                            @endif
                         </td>
                         <td>{{$order->product->name}}</td>
                         <td>{{$order->total_price}}</td>

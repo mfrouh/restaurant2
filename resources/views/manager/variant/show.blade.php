@@ -20,13 +20,5 @@
             </div>
         </div>
     </div>
-    <div class="card card-success text-right">
-        <div class="card-header ">صور المنتج</div>
-        <div class="card-body">
-            @foreach ($variant->gallery as $image)
-                <img src="{{asset('/storage/product')}}/{{$image->url}}" class=" shadow-sm m-2" alt="" height="100px" width="100px">
-            @endforeach
-        </div>
-    </div>
 </div>
 @endsection

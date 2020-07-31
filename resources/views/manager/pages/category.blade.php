@@ -22,7 +22,9 @@
                         <td>{{$k+1}}</td>
                         <td>{{$category->name}}</td>
                         <td>
+                            @if ($category->image)
                             <img src="{{asset($category->image->url)}}" height="70px" width="70px" alt="">
+                            @endif
                         </td>
                         <td>{{active($category->active)}}</td>
                     </tr>

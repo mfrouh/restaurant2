@@ -13,7 +13,9 @@
         <div class="card-body">
             <div class="row mb-5 text-center">
                 <div class="col-12">
-                   <img src="{{asset($product->image->url)}}" class="shadow-sm" height="100px" width="100px" alt="">
+                    @if ($product->image)
+                    <img src="{{asset($product->image->url)}}" class="shadow-sm" height="100px" width="100px" alt="">
+                    @endif
                 </div>
             </div>
             <div class="row mb-2">

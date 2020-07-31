@@ -23,7 +23,9 @@
                     <tr>
                         <td>{{$k+1}}</td>
                         <td>
+                            @if ($variant->product->image)
                             <img src="{{asset($variant->product->image->url)}}" height="50px" width="50px" alt="">
+                            @endif
                         </td>
                         <td>{{$variant->product->name}}</td>
                         <td>{{$variant->price}}</td>

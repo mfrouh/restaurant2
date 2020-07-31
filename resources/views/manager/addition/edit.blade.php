@@ -11,7 +11,9 @@
         @csrf
         @method('put')
         <div class="form-group text-center col-12">
+          @if ($addition->additionable->image)
             <img src="{{asset($addition->additionable->image->url)}}" height="100px" width="100px" class="img-circle shadow-sm mb-1" alt="">
+          @endif
             <br>
              <span class="badge-danger p-1 shadow-sm">{{$addition->additionable->name}}</span>
          </div>
