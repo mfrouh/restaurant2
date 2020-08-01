@@ -35,6 +35,31 @@
 
   <!-- Custom style for RTL -->
   <link rel="stylesheet" href="/css/custom.css">
+    <style>
+      @font-face {
+    font-family: 'Almarai';
+    src: url('/webfonts/Almarai-Bold.ttf');
+    src: url('/webfonts/Almarai-ExtraBold.ttf');
+    src: url('/webfonts/Almarai-Light.ttf');
+    src: url('/webfonts/Almarai-Regular.ttf');
+     }
+    @font-face {
+    font-family: 'Ubuntu';
+    src: url('/webfonts/Ubuntu-Bold.ttf');
+    src: url('/webfonts/Ubuntu-BoldItalic.ttf');
+    src: url('/webfonts/Ubuntu-Italic.ttf');
+    src: url('/webfonts/Ubuntu-Light.ttf');
+    src: url('/webfonts/Ubuntu-LightItalic.ttf');
+    src: url('/webfonts/Ubuntu-Medium.ttf');
+    src: url('/webfonts/Ubuntu-MediumItalic.ttf');
+    src: url('/webfonts/Ubuntu-Regular.ttf');
+     }
+      body
+      {
+        font-family: 'Ubuntu','Almarai';
+      }
+  </style>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
