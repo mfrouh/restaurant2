@@ -21,6 +21,31 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+    @font-face {
+  font-family: 'Almarai';
+  src: url('/webfonts/Almarai-Bold.ttf');
+  src: url('/webfonts/Almarai-ExtraBold.ttf');
+  src: url('/webfonts/Almarai-Light.ttf');
+  src: url('/webfonts/Almarai-Regular.ttf');
+   }
+  @font-face {
+  font-family: 'Ubuntu';
+  src: url('/webfonts/Ubuntu-Bold.ttf');
+  src: url('/webfonts/Ubuntu-BoldItalic.ttf');
+  src: url('/webfonts/Ubuntu-Italic.ttf');
+  src: url('/webfonts/Ubuntu-Light.ttf');
+  src: url('/webfonts/Ubuntu-LightItalic.ttf');
+  src: url('/webfonts/Ubuntu-Medium.ttf');
+  src: url('/webfonts/Ubuntu-MediumItalic.ttf');
+  src: url('/webfonts/Ubuntu-Regular.ttf');
+   }
+    body
+    {
+      font-family: 'Ubuntu','Almarai';
+    }
+</style>
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">

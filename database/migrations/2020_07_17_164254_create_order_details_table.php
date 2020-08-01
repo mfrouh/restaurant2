@@ -23,6 +23,7 @@ class CreateOrderDetailsTable extends Migration
             $table->decimal('price');
             $table->decimal('total_price');
             $table->integer('quantity');
+            $table->enum('complete',[0,1])->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
