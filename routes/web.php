@@ -83,7 +83,7 @@ Route::post('/changepassword','HomeController@changepassword');
 Route::post('/changeinformation','HomeController@changeinformation');
 Route::get('/cart', 'Front\CartController@all');
 Route::get('/cart/empty', 'Front\CartController@empty');
-Route::get('/cart/create', 'Front\CartController@create');
+Route::post('/cart', 'Front\CartController@create');
 Route::get('/cart/{id}', 'Front\CartController@destroy');
 Route::get('/wishlist', 'Front\WishlistController@all');
 Route::get('/wishlist/empty', 'Front\WishlistController@empty');

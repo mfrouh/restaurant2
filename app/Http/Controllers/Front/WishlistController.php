@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function all()
     {
         $wishlist=Wishlist::where('user_id',auth()->user()->id)->get('product_id');

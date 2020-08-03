@@ -10,13 +10,13 @@ class RestaurantController extends Controller
 {
     public function restaurant(Restaurant $restaurant)
     {
-        return view('front.pages.restaurant',compact('restaurant'));
+        return view('front.restaurant.restaurant',compact('restaurant'));
     }
 
     public function restaurants()
     {
         $restaurants=Restaurant::all();
-        return view('front.pages.restaurants',compact('restaurants'));
+        return view('front.restaurant.restaurants',compact('restaurants'));
     }
 
    

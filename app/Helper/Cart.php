@@ -5,7 +5,7 @@ use App\product;
 class Cart
 {
 
- public static function create($id,$quantity=null)
+ public static function create($id,$variant=null,$quantity=null)
  {
     if(isset($_COOKIE["Cart"]))
     {
@@ -17,8 +17,12 @@ class Cart
      $cart_data = array();
     }
     $q=isset($quantity)?$quantity:1;
+    $v=isset($variant)?$variant:null;
+    $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
      $item_array = array(
-      'id'   => $id,
+      'id'   => $cartid,
+      'product'=>$id,
+      'variant'=>$v,
       'quantity'=>$q,
      );
     $cart_data[] = $item_array;
@@ -26,20 +30,21 @@ class Cart
     setcookie('Cart', $item_data, time() + (86400 * 30),'/');
  }
 
- public static function update($id,$quantity=null)
+ public static function update($id,$variant=null,$quantity=null)
  {
      $cookie_data = stripslashes($_COOKIE['Cart']);
      $cart_data = json_decode($cookie_data, true);
      $id_list = array_column($cart_data, 'id');
-     if(in_array($id, $id_list))
+     $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
+     if(in_array($cartid, $id_list))
      {
         foreach($cart_data as $keys => $values)
         {
-           if($cart_data[$keys]["id"] == $id && !isset($quantity))
+           if($cart_data[$keys]["id"] == $cartid && !isset($quantity))
            {
             $cart_data[$keys]["quantity"] = $cart_data[$keys]["quantity"] +1;
            }
-           if($cart_data[$keys]["id"] == $id && isset($quantity))
+           if($cart_data[$keys]["id"] == $cartid && isset($quantity))
            {
             $cart_data[$keys]["quantity"] =$quantity;
            }
@@ -82,7 +87,7 @@ class Cart
     $arry=0;
     foreach (self::content()['quantity'] as $key => $value) {
        $product=product::where('id',$key)->first();
-       $arry+=$value*$product->price_with_offer;
+       $arry+=$value*$product->price;
     }
     return $arry;
  }
@@ -93,7 +98,7 @@ class Cart
      $product=array();
      $quantity=array();
        foreach (json_decode($_COOKIE['Cart']) as $key => $value) {
-         $product[]=$value->id;
+         $product[]=$value->product;
          $quantity[$value->id]=$value->quantity;
        }
      return ['products'=>$product,'quantity'=>$quantity];
@@ -101,15 +106,20 @@ class Cart
     return ['products'=>[],'quantity'=>[]];
  }
 
- public static function createorupdate($id,$quantity=null)
+ public static function CreateORUpdate($id,$variant=null,$quantity=null)
  {
-    if(isset($_COOKIE['Cart']) && in_array($id,self::content()['products']))
+   $cookie_data = stripslashes($_COOKIE['Cart']);
+   $cart_data = json_decode($cookie_data, true);
+   $id_list = array_column($cart_data, 'id');
+   $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
+   
+    if(isset($_COOKIE['Cart']) && in_array($cartid,$id_list))
     {
-      return  self::update($id,$quantity);
+      return  self::update($id,$variant=null,$quantity);
     }
     else
     {
-      return  self::create($id,$quantity);
+      return  self::create($id,$variant=null,$quantity);
     }
  }
 
