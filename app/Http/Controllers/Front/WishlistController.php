@@ -16,9 +16,8 @@ class WishlistController extends Controller
     
     public function all()
     {
-        $wishlist=Wishlist::where('user_id',auth()->user()->id)->get('product_id');
-        $products=Product::whereIn('id',$wishlist)->get();
-        return view('front.pages.wishlist',compact('products'));
+        $wishlist=Wishlist::where('user_id',auth()->user()->id)->get();
+        return view('front.pages.wishlist',compact('wishlist'));
     }
 
     public function empty()

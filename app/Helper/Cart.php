@@ -5,7 +5,7 @@ use App\product;
 class Cart
 {
 
- public static function create($id,$variant=null,$quantity=null)
+ public static function create($id,$variant=null,$additions=null,$quantity=null)
  {
     if(isset($_COOKIE["Cart"]))
     {
@@ -23,6 +23,7 @@ class Cart
       'id'   => $cartid,
       'product'=>$id,
       'variant'=>$v,
+      'additions'=>$additions,
       'quantity'=>$q,
      );
     $cart_data[] = $item_array;
@@ -30,7 +31,7 @@ class Cart
     setcookie('Cart', $item_data, time() + (86400 * 30),'/');
  }
 
- public static function update($id,$variant=null,$quantity=null)
+ public static function update($id,$variant=null,$additions=null,$quantity=null)
  {
      $cookie_data = stripslashes($_COOKIE['Cart']);
      $cart_data = json_decode($cookie_data, true);
@@ -93,20 +94,23 @@ class Cart
  }
  public static function content()
  {
+    $cart=array();
     if(isset($_COOKIE['Cart']))
     {
-     $product=array();
-     $quantity=array();
        foreach (json_decode($_COOKIE['Cart']) as $key => $value) {
-         $product[]=$value->product;
-         $quantity[$value->id]=$value->quantity;
+         $cart['id']=$value->id;
+         $cart['product']=$value->product;
+         $cart['quantity']=$value->quantity;
+         $cart['variant']=$value->variant?$value->variant:null;
+         $cart['additions']=$value->additions?$value->additions:null;
+         $cart['price']=$value->price;
        }
-     return ['products'=>$product,'quantity'=>$quantity];
+     return $cart;
     }
-    return ['products'=>[],'quantity'=>[]];
+    return $cart;
  }
 
- public static function CreateORUpdate($id,$variant=null,$quantity=null)
+ public static function CreateORUpdate($id,$variant=null,$additions=null,$quantity=null)
  {
    $cookie_data = stripslashes($_COOKIE['Cart']);
    $cart_data = json_decode($cookie_data, true);
@@ -115,11 +119,11 @@ class Cart
    
     if(isset($_COOKIE['Cart']) && in_array($cartid,$id_list))
     {
-      return  self::update($id,$variant=null,$quantity);
+      return  self::update($id,$variant=null,$additions=null,$quantity);
     }
     else
     {
-      return  self::create($id,$variant=null,$quantity);
+      return  self::create($id,$variant=null,$additions=null,$quantity);
     }
  }
 

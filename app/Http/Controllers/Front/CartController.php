@@ -10,7 +10,8 @@ class CartController extends Controller
 {
    public function all()
    {
-    return view('front.pages.cart');
+    $cart=Cart::content();
+    return view('front.pages.cart',compact('cart'));
    }
 
    public function empty()
@@ -21,7 +22,7 @@ class CartController extends Controller
 
    public function create(Request $request)
    {
-       Cart::CreateORUpdate($request->product,$request->variant,$request->quantity);
+       Cart::CreateORUpdate($request->product,$request->variant,$request->additions,$request->quantity);
        return back();
    }
     
