@@ -15,8 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->unique();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
+            $table->morphs('offerable');
             $table->enum('type',['fixed','variable']);
             $table->integer('value');
             $table->string('message')->nullable();

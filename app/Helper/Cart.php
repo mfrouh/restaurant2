@@ -1,11 +1,13 @@
 <?php
 
-use App\product;
+use App\Addition;
+use App\Product;
+use App\Variant;
 
 class Cart
 {
 
- public static function create($id,$variant=null,$additions=null,$quantity=null)
+ public static function create($id,$variant=null,$additions=[],$quantity=null)
  {
     if(isset($_COOKIE["Cart"]))
     {
@@ -18,12 +20,13 @@ class Cart
     }
     $q=isset($quantity)?$quantity:1;
     $v=isset($variant)?$variant:null;
+    $a=isset($additions)?$additions:[];
     $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
      $item_array = array(
       'id'   => $cartid,
       'product'=>$id,
       'variant'=>$v,
-      'additions'=>$additions,
+      'additions'=>$a,
       'quantity'=>$q,
      );
     $cart_data[] = $item_array;
@@ -31,7 +34,7 @@ class Cart
     setcookie('Cart', $item_data, time() + (86400 * 30),'/');
  }
 
- public static function update($id,$variant=null,$additions=null,$quantity=null)
+ public static function update($id,$variant=null,$additions=[],$quantity=null)
  {
      $cookie_data = stripslashes($_COOKIE['Cart']);
      $cart_data = json_decode($cookie_data, true);
@@ -79,18 +82,17 @@ class Cart
  {
     if(isset($_COOKIE['Cart']))
     {
-      return count(self::content()['products']);
+      return count(self::content());
     }
     return 0;
  }
  public static function total()
  {
-    $arry=0;
-    foreach (self::content()['quantity'] as $key => $value) {
-       $product=product::where('id',$key)->first();
-       $arry+=$value*$product->price;
+    $total=0;
+    foreach (self::content() as $key => $value) {
+       $total+=$value->price;
     }
-    return $arry;
+    return $total;
  }
  public static function content()
  {
@@ -99,18 +101,43 @@ class Cart
     {
        foreach (json_decode($_COOKIE['Cart']) as $key => $value) {
          $cart['id']=$value->id;
-         $cart['product']=$value->product;
+         //get product
+         $product=Product::where('id',$value->product)->first();
+         //get variant  if found
+         if ($value->variant) {
+            $variant=Variant::where('id',$value->variant)->first();
+            $price=$variant->price;
+         }
+         else
+         {
+            $variant=null;
+            $price=$product->price;
+         }
+         //get additions if found
+         if ($value->additions) {
+            $additions=Addition::whereIn('id',$value->additions)->get();
+            $addprice=0;
+            foreach ($additions as $key => $addition) {
+              $addprice+=$addition->price;
+            }
+            $price+=$addprice;
+         }
+         else
+         {
+            $additions=[];
+         }
+         $cart['product']=$product;
          $cart['quantity']=$value->quantity;
-         $cart['variant']=$value->variant?$value->variant:null;
-         $cart['additions']=$value->additions?$value->additions:null;
-         $cart['price']=$value->price;
+         $cart['variant']=$variant;
+         $cart['additions']=$additions;
+         $cart['price']=$price;
        }
      return $cart;
     }
     return $cart;
  }
 
- public static function CreateORUpdate($id,$variant=null,$additions=null,$quantity=null)
+ public static function CreateORUpdate($id,$variant=null,$additions=[],$quantity=null)
  {
    $cookie_data = stripslashes($_COOKIE['Cart']);
    $cart_data = json_decode($cookie_data, true);
@@ -119,11 +146,11 @@ class Cart
    
     if(isset($_COOKIE['Cart']) && in_array($cartid,$id_list))
     {
-      return  self::update($id,$variant=null,$additions=null,$quantity);
+      return  self::update($id,$variant=null,$additions=[],$quantity);
     }
     else
     {
-      return  self::create($id,$variant=null,$additions=null,$quantity);
+      return  self::create($id,$variant=null,$additions=[],$quantity);
     }
  }
 
