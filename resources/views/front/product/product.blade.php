@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('title')
    {{$product->name}}
 @endsection
@@ -6,10 +6,10 @@
     <div class="container">
        <div class="row">
            <div class="col-md-6">
-               <img src="{{asset($product->image->url)}}" height="100px" width="100px" alt="">
+               <img src="{{asset($product->image->url)}}" height="300px" width="100%" alt="">
            </div>
            <div class="col-md-6">
-               {{$product->name}}
+               {{$product->name}}<br>
                {{$product->description}}
                @if ($product->variant)
                 {{$product->variant->price}}

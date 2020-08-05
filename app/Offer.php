@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
-  public function product()
+  public function offerable()
   {
-      return $this->belongsTo('App\Product');
+      return $this->morphTo();
   }
 }

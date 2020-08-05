@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"  dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,24 +7,49 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">  
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <style>
+        @font-face {
+      font-family: 'Almarai';
+      src: url('/webfonts/Almarai-Bold.ttf');
+      src: url('/webfonts/Almarai-ExtraBold.ttf');
+      src: url('/webfonts/Almarai-Light.ttf');
+      src: url('/webfonts/Almarai-Regular.ttf');
+       }
+      @font-face {
+      font-family: 'Ubuntu';
+      src: url('/webfonts/Ubuntu-Bold.ttf');
+      src: url('/webfonts/Ubuntu-BoldItalic.ttf');
+      src: url('/webfonts/Ubuntu-Italic.ttf');
+      src: url('/webfonts/Ubuntu-Light.ttf');
+      src: url('/webfonts/Ubuntu-LightItalic.ttf');
+      src: url('/webfonts/Ubuntu-Medium.ttf');
+      src: url('/webfonts/Ubuntu-MediumItalic.ttf');
+      src: url('/webfonts/Ubuntu-Regular.ttf');
+       }
+        body
+        {
+          font-family: 'Ubuntu','Almarai';
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                   المطعم 2
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,19 +58,27 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/restaurants">المطاعم</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products">المنتجات</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">تسجيل دخول</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">انشاء حساب</a>
                                 </li>
                             @endif
                         @else
@@ -67,14 +100,24 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item p-2">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i> السلة
+                        </li>
+                        <li class="nav-item p-2">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
 </body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/adminlte.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
 </html>

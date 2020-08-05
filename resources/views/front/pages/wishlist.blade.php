@@ -1,11 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('title')
    المفضلة 
 @endsection
 @section('content')
     <div class="container">
         <table class="table table-striped table-inverse shadow-sm text-center">
-            <thead class="thead-inverse">
+            <thead class="thead-inverse bg-gradient-red">
                 <tr>
                     <th>#</th>
                     <th>اسم المنتج</th>
