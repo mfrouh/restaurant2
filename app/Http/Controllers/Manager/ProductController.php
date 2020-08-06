@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
+        $products=Product::where('restaurant_id',auth()->user()->restaurant->id)->get();
         return view('manager.product.index',compact('products'));
     }
 
@@ -80,7 +80,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-       return view('manager.product.show',compact('product'));
+        if(auth()->user()->restaurant->id==$product->restaurant_id){
+            return view('manager.product.show',compact('product'));
+        }else
+        {
+            return abort(404);
+        }
     }
 
     /**
@@ -91,7 +96,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('manager.product.edit',compact('product'));
+        if(auth()->user()->restaurant->id==$product->restaurant_id){
+            return view('manager.product.edit',compact('product'));
+        }else
+        {
+            return abort(404);
+        }
     }
 
     /**
@@ -120,7 +130,14 @@ class ProductController extends Controller
         $product->slug=$request->name.rand(1111,9999);
         $product->save();
            if ($request->image) {
+               if($product->image){
                 $product->image()->update(['url'=>sorteimage('storage/product',$request->image)]);
+               }
+               else
+               {
+                $product->image()->create(['url'=>sorteimage('storage/product',$request->image)]);
+               }
+                
            }
            if ($request->tags) {
             foreach (explode(',',$request->tags) as $key =>$value ) {
@@ -144,7 +161,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return back();
+        if(auth()->user()->restaurant->id==$product->restaurant_id){
+            $product->delete();
+             return back();
+        }else
+        {
+            return abort(404);
+        }
+       
     }
 }

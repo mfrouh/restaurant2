@@ -6,9 +6,15 @@
     <div class="container">
        <div class="row">
            <div class="col-md-6">
-               <img src="{{asset($product->image->url)}}" height="300px" width="100%" alt="">
+               <div class="card">
+                 <div class="card-body">
+                    @if ($product->image)
+                    <img src="{{asset($product->image->url)}}" height="300px" width="100%" alt="">
+                    @endif
+                 </div>
+               </div>
            </div>
-           <div class="col-md-6">
+           <div class="col-md-6 text-right">
                {{$product->name}}<br>
                {{$product->description}}
                @if ($product->variant)

@@ -125,7 +125,13 @@ class RestaurantController extends Controller
          $restaurant->user_id=auth()->user()->id;
          $restaurant->save();
          if ($request->image) {
-            $restaurant->image()->update(["url" => sorteimage('storage/restaurant',$request->image)]);
+            if($restaurant->image){
+                $restaurant->image()->update(['url'=>sorteimage('storage/restaurant',$request->image)]);
+               }
+               else
+               {
+                $restaurant->image()->create(['url'=>sorteimage('storage/restaurant',$request->image)]);
+               }
          }
          return redirect('/manager/restaurant')->with('succes','Update Restaurant');
        

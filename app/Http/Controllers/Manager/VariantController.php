@@ -42,7 +42,6 @@ class VariantController extends Controller
     {
         $this->validate($request,[
             'price'=>'required',
-            'qty'=>'required',
             'product_id'=>'required',
         ]);
         $sku="";
@@ -55,13 +54,12 @@ class VariantController extends Controller
         if(!$variant){
         $variant=new variant();
         $variant->price=$request->price;
-        $variant->qty=$request->qty;
         $variant->product_id=$request->product_id;
         $variant->sku=$sku;
         $variant->save();
-        if ($request->images) {
-            foreach ($request->images as $key =>$value ) {
-                $variant->image()->create(['url'=>sorteimage('storage/product',$value)]);
+        if ($request->image) {
+            foreach ($request->image as $key =>$value ) {
+                $variant->image()->create(['url'=>sorteimage('storage/variant',$value)]);
             }
            }
         foreach ($request->all()  as $key => $value) {
@@ -112,16 +110,14 @@ class VariantController extends Controller
     {
         $this->validate($request,[
             'price'=>'required',
-            'qty'=>'required',
             'product_id'=>'required',
         ]);
         $variant->price=$request->price;
-        $variant->qty=$request->qty;
         $variant->product_id=$request->product_id;
         $variant->save();
-        if ($request->images) {
-            foreach ($request->images as $key =>$value ) {
-                $variant->image()->update(['url'=>sorteimage('storage/product',$value)]);
+        if ($request->image) {
+            foreach ($request->image as $key =>$value ) {
+                $variant->image()->update(['url'=>sorteimage('storage/variant',$value)]);
             }
            }
         
