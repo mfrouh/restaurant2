@@ -90,7 +90,7 @@ class Cart
  {
     $total=0;
     foreach (self::content() as $key => $value) {
-       $total+=$value->price;
+       $total+=$value['price'];
     }
     return $total;
  }
@@ -100,18 +100,18 @@ class Cart
     if(isset($_COOKIE['Cart']))
     {
        foreach (json_decode($_COOKIE['Cart']) as $key => $value) {
-         $cart['id']=$value->id;
+        
          //get product
          $product=Product::where('id',$value->product)->first();
          //get variant  if found
          if ($value->variant) {
             $variant=Variant::where('id',$value->variant)->first();
-            $price=$variant->price;
+            $price=$variant->price*$value->quantity;
          }
          else
          {
             $variant=null;
-            $price=$product->price;
+            $price=$product->price*$value->quantity;
          }
          //get additions if found
          if ($value->additions) {
@@ -126,11 +126,12 @@ class Cart
          {
             $additions=[];
          }
-         $cart['product']=$product;
-         $cart['quantity']=$value->quantity;
-         $cart['variant']=$variant;
-         $cart['additions']=$additions;
-         $cart['price']=$price;
+         $cart[$value->id]['id']=$value->id;
+         $cart[$value->id]['product']=$product;
+         $cart[$value->id]['quantity']=$value->quantity;
+         $cart[$value->id]['variant']=$variant;
+         $cart[$value->id]['additions']=$additions;
+         $cart[$value->id]['price']=$price;
        }
      return $cart;
     }
@@ -139,11 +140,18 @@ class Cart
 
  public static function CreateORUpdate($id,$variant=null,$additions=[],$quantity=null)
  {
-   $cookie_data = stripslashes($_COOKIE['Cart']);
-   $cart_data = json_decode($cookie_data, true);
-   $id_list = array_column($cart_data, 'id');
-   $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
-   
+   if(isset($_COOKIE["Cart"]))
+   {
+    $cookie_data = stripslashes($_COOKIE['Cart']);
+    $cart_data = json_decode($cookie_data, true);
+    $id_list = array_column($cart_data, 'id');
+    $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
+ 
+   }
+   else
+   {
+    $cart_data = array();
+   }   
     if(isset($_COOKIE['Cart']) && in_array($cartid,$id_list))
     {
       return  self::update($id,$variant=null,$additions=[],$quantity);

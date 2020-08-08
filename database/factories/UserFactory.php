@@ -36,7 +36,7 @@ $factory->define(Restaurant::class, function (Faker $faker) {
         'delivery' => 1,
         'phone' => '01'.rand(0000000000,229999999),
         'address' => $faker->address,
-        'description'=>'gf',
+        'description'=>$faker->name,
         'price_delivery'=>rand(5,15),
         'time_delivery'=>rand(10,30),
         'user_id'=>User::all()->random()->id,
@@ -54,8 +54,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'restaurant_id'=>Restaurant::all()->random()->id,
         'category_id'=>Category::all()->random()->id,
         'active'=>1,
-        'description'=>'gg',
+        'description'=>$faker->name,
         'slug' => $faker->name,
-        'price' => rand(1,200),
+        'price' => rand(1.00,200.00),
     ];
 });

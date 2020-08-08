@@ -46,7 +46,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                    المطعم 2
@@ -111,11 +111,12 @@
             </div>
         </nav>
 
-        <main>
+        <main class="pt-5">
             @yield('content')
         </main>
     </div>
 </body>
+<script src="{{asset('js/app.js')}}"></script>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/adminlte.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
