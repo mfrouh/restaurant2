@@ -23,12 +23,12 @@ class CartController extends Controller
    public function create(Request $request)
    {
        Cart::CreateORUpdate($request->product,$request->variant,$request->additions,$request->quantity);
-       return back();
+       return response()->json(Cart::content());
    }
     
    public function destroy($id)
    {
       Cart::destroy($id);
-      return back();
+      return response()->json(Cart::content());
    }
 }
