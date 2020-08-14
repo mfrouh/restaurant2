@@ -12,9 +12,9 @@
         </div>
         <div class="col-2 text-center m-0 p-1" v-if="! product.variants">
            {{product.price}} جنية <br><br>
-           <a @click="cart" class="btn-outline-primary btn-sm shadow-sm"> <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+           <a href="" @click="cart" class="btn-outline-primary btn-sm shadow-sm"> <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
         </div>
-        <div class="col-2 text-center m-0 p-1" v-if="product.variants">
+        <div class="col-2 text-center m-0 p-1"  v-if="product.variants">
           السعر علي حسب اختيارك 
         </div>
     </div>

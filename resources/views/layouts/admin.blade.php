@@ -176,7 +176,6 @@
   </aside>
   <div class="content-wrapper">
     <section class="content p-2" id="app">
-        <product></product>
        <x-alert></x-alert>
        @yield('content')
     </section>

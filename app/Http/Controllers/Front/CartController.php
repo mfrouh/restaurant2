@@ -10,8 +10,8 @@ class CartController extends Controller
 {
    public function all()
    {
-    $cart=Cart::content();
-    return view('front.pages.cart',compact('cart'));
+    $data=['carts'=>Cart::content(),'total'=>Cart::total()];
+    return response()->json($data);
    }
 
    public function empty()
@@ -23,12 +23,16 @@ class CartController extends Controller
    public function create(Request $request)
    {
        Cart::CreateORUpdate($request->product,$request->variant,$request->additions,$request->quantity);
-       return response()->json(Cart::content());
-   }
+       $data=['carts'=>Cart::content(),'total'=>Cart::total()];
+       return response()->json($data);
+ 
+    }
     
    public function destroy($id)
    {
       Cart::destroy($id);
-      return response()->json(Cart::content());
+      $data=array();
+      $data=['carts'=>Cart::content(),'total'=>Cart::total()];
+      return response()->json($data);
    }
 }

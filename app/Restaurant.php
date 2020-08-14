@@ -12,6 +12,12 @@ class Restaurant extends Model
   {
       return $this->hasMany('App\Product');
   }
+  public function categories()
+  {
+      $categories=Product::whereIn('id',$this->products)->pluck('category_id');
+      $category=Category::whereIn('id',$categories)->select(['name','active'])->get();
+      return $category;
+  }
 
   public function user()
   {

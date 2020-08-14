@@ -19,6 +19,39 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="/css/adminlte.min.css">  
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <style>
+        .StripeElement {
+      box-sizing: border-box;
+    
+      height: 40px;
+    
+      padding: 10px 12px;
+    
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background-color: rgb(80, 79, 79)0, 79, 79);
+    
+      box-shadow: 0 1px 3px 0 #e6ebf1;
+      -webkit-transition: box-shadow 150ms ease;
+      transition: box-shadow 150ms ease;
+    }
+    
+    .StripeElement--focus {
+      box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+    
+    .StripeElement--invalid {
+      border-color: #fa755a;
+    }
+    
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
+    }
+    
+    </style>
+    
     <style>
         @font-face {
       font-family: 'Almarai';
@@ -112,10 +145,12 @@
         </nav>
 
         <main class="pt-5">
+            <x-alert></x-alert>
             @yield('content')
         </main>
     </div>
 </body>
+@stack('scripts')
 <script src="{{asset('js/app.js')}}"></script>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/adminlte.js"></script>

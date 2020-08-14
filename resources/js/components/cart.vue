@@ -2,7 +2,7 @@
  <div>
        <div class="card text-right p-0 " v-for="(cart, index) in mycarts" :key="index" >
             <div class="card-body p-1">
-              <div class="row">
+              <div class="row" style="align-items: center;">
                  <div class="col-2">
                    <img  class="float-right"  src="/storage/product/1596679574f5.jpg" height="33px" width="40px">
                  </div>
@@ -20,14 +20,14 @@
                 </div>
               </div> 
             </div>
-        </div>
+         </div>
          
-         <div v-if="! mycarts" >
+         <div v-if="is_empty" >
            <i class="fas fa-shopping-cart "></i><br>
              السلة فارغة
          </div>
-          <div v-if="mycarts" class="card-header text-center bg-dark">
-            المجموع :  {{total}}  جنية <br><br>
+          <div v-if="! is_empty" class="">
+            المجموع :  {{tot}}  جنية <br><br>
            <a href="/checkout" class=" btn btn-primary btn-sm" >اطلب الان</a>
          </div>
 </div>
@@ -35,24 +35,43 @@
 <script>
 export default {
     props:['carts','total'],
-    data() {
+    data() { 
         return {
             'mycarts':[],
+            'tot':0,
+            'is_empty':false,
         }
     },
     mounted() {
         this.mycarts=this.carts;
+        this.tot=this.total;
+        if(this.tot==0)
+        {
+         this.is_empty=true;
+        }
     },
     methods: {
         deletecart(id)
         {
-        axios.get('/cart/'+id)
-        .then(response => {
-             this.mycarts=response.data;
-         })
-        .catch(error => {
-           this.$toaster.error(error.response.data.errors);
-        });
+          axios.get('/cart/'+id)
+          .then(response => {
+               this.getcart();
+           })
+          .catch(error => {
+            error.response.data.errors;
+          });
+        },
+        getcart()
+        {
+           axios.get('/cart')
+          .then(response => {
+               this.mycarts=response.data.carts;
+               this.tot=response.data.total; 
+               if(this.tot==0){this.is_empty=true;}
+           })
+          .catch(error => {
+            error.response.data.errors;
+          });
         }
     },
 }

@@ -3,8 +3,8 @@
    {{$restaurant->name}}
 @endsection
 @section('content')
-<div class="container-fluid">
-   {{-- {{$restaurant->image->url}} --}}
+<div class="container-fluid p-0 m-0">
+   <img  src="/storage/product/1596679574f5.jpg" height="300px"  width="100%">
 </div>
 <div class="container mt-2">
    <div class="row">
@@ -14,6 +14,13 @@
                <h6> الاصناف </h6> 
             </div>
          </div>
+      @foreach ($restaurant->categories() as $category)
+        <div class="card text-white  p-0">
+           <div class="card-header bg-gradient-maroon text-right small p-1">
+              <a href="#{{$category->name}}" class="body" > {{$category->name}}  </a> 
+           </div>
+        </div>
+      @endforeach
       </div>
       <div class="col-xl-6 p-1">
          <div class="card">
