@@ -52,10 +52,10 @@ Route::group(['prefix' => 'manager','middleware'=>['auth','checkrole:manager','H
 
     Route::get('/valueable/create/{product}','Manager\ValueableController@create');
     Route::get('/variant/create/{product}','Manager\VariantController@create');
-    Route::get('/offer/create/{product}','Manager\OfferController@create');   
-    Route::get('/addition/create/{product}','Manager\AdditionController@create');   
+    Route::get('/offer/create/{product}','Manager\OfferController@create');
+    Route::get('/addition/create/{product}','Manager\AdditionController@create');
     Route::get('/addition/create', function (){return abort(404);});
-    Route::get('/variant/create', function (){return abort(404);}); 
+    Route::get('/variant/create', function (){return abort(404);});
     Route::get('/offer/create', function (){return abort(404);});
     Route::get('/valueable/create', function (){return abort(404);});
     Route::get('/dashboard','Manager\PagesController@dashboard');
@@ -93,5 +93,6 @@ Route::get('/product/{product}', 'Front\ProductController@product');
 Route::get('/products', 'Front\ProductController@products');
 Route::get('/restaurant/{restaurant}', 'Front\RestaurantController@restaurant');
 Route::get('/restaurants', 'Front\RestaurantController@restaurants');
+Route::get('/allrestaurants', 'Front\RestaurantController@getallrestaurant');
 Route::get('/checkout', 'Front\PagesController@checkout');
 Route::post('/checkout', 'Front\PagesController@savecheckout');

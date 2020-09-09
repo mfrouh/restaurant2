@@ -19,5 +19,11 @@ class RestaurantController extends Controller
         return view('front.restaurant.restaurants',compact('restaurants'));
     }
 
-   
+    public function getallrestaurant()
+    {
+        $restaurants=Restaurant::paginate(9);
+        return response()->json($restaurants);
+    }
+
+
 }
