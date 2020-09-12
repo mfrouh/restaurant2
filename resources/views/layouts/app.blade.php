@@ -15,10 +15,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-      <link rel="stylesheet" href="/css/all.min.css">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="/css/adminlte.min.css">
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="{{ asset('/fontawesome-free-5.7.2-web/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://js.stripe.com/v3/"></script>
 
     <style>
@@ -51,35 +50,45 @@
     }
 
     </style>
-
-    <style>
-        @font-face {
-      font-family: 'Almarai';
-      src: url('/webfonts/Almarai-Bold.ttf');
-      src: url('/webfonts/Almarai-ExtraBold.ttf');
-      src: url('/webfonts/Almarai-Light.ttf');
-      src: url('/webfonts/Almarai-Regular.ttf');
-       }
-      @font-face {
-      font-family: 'Ubuntu';
-      src: url('/webfonts/Ubuntu-Bold.ttf');
-      src: url('/webfonts/Ubuntu-BoldItalic.ttf');
-      src: url('/webfonts/Ubuntu-Italic.ttf');
-      src: url('/webfonts/Ubuntu-Light.ttf');
-      src: url('/webfonts/Ubuntu-LightItalic.ttf');
-      src: url('/webfonts/Ubuntu-Medium.ttf');
-      src: url('/webfonts/Ubuntu-MediumItalic.ttf');
-      src: url('/webfonts/Ubuntu-Regular.ttf');
-       }
-        body
-        {
-          font-family: 'Ubuntu','Almarai';
-        }
-    </style>
+ <style>
+    @font-face {
+  font-family: 'Almarai';
+  src: url('/webfonts/Almarai-Bold.ttf');
+  src: url('/webfonts/Almarai-ExtraBold.ttf');
+  src: url('/webfonts/Almarai-Light.ttf');
+  src: url('/webfonts/Almarai-Regular.ttf');
+   }
+  @font-face {
+  font-family: 'Ubuntu';
+  src: url('/webfonts/Ubuntu-Bold.ttf');
+  src: url('/webfonts/Ubuntu-BoldItalic.ttf');
+  src: url('/webfonts/Ubuntu-Italic.ttf');
+  src: url('/webfonts/Ubuntu-Light.ttf');
+  src: url('/webfonts/Ubuntu-LightItalic.ttf');
+  src: url('/webfonts/Ubuntu-Medium.ttf');
+  src: url('/webfonts/Ubuntu-MediumItalic.ttf');
+  src: url('/webfonts/Ubuntu-Regular.ttf');
+   }
+    body
+    {
+      font-family: 'Ubuntu','Almarai';
+    }
+</style>
+<style>
+    .modal-backdrop {
+position: fixed;
+top: 0;
+left: 0;
+z-index: 1040;
+width: 100vw;
+height: 100vh;
+background-color: #00000061;
+}
+</style>
 </head>
 <body style="background: #f5f5f5">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm fixed-top">
+        <nav class="navbar navbar-expand-md navbar-white bg-danger shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                    المطعم 2
@@ -151,9 +160,9 @@
     </div>
 </body>
 @stack('scripts')
-<script src="{{asset('js/app.js')}}"></script>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/adminlte.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/jquery.js') }}" defer></script>
+<script src="{{ asset('js/popper.js') }}" defer></script>
+<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
 
 </html>

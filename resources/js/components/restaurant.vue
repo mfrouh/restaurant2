@@ -4,7 +4,6 @@
     <div class="card-body card-boreder ">
         <a class="btn btn-primary btn-sm border-50 float-left" :href="/restaurant/+restaurant.id"><i class="fas fa-hand-point-right"></i></a>
         <a class="btn btn-danger btn-sm border-50 float-left ml-1"><i class="fa fa-info m-1" aria-hidden="true"></i></a>
-
         <span class="float-right"> {{restaurant.name}} </span>
     </div>
 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-   السلة 
+   السلة
 @endsection
 @section('content')
     <div class="container">
@@ -36,7 +36,7 @@
                             <td colspan="8" class="text-center">
                                 السلة فارغة
                             </td>
-                        </tr>  
+                        </tr>
                     @endforelse
                 </tbody>
         </table>
