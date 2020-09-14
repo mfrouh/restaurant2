@@ -1,20 +1,20 @@
 <template>
-<div class="card">
-    <div class="card-body p-1 text-right">
-        <div class="row m-0">
-            <div class="col-3 p-1 m-0">
-                <img v-if="product.image" :src="product.image.url" height="100px" width="100px">
-                <img v-else-if src="/storage/product/1596679574f5.jpg" height="100px" width="100px">
+<div class="card border shadow-sm m-1">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <img v-if="product.image" :src="product.image.url" height="100px" width="100%">
+                <img v-else-if src="/storage/product/1596679574f5.jpg" class="border" height="100px" width="100%">
             </div>
-            <div class="col-7 p-1 m-0">
+            <div class="col-7 text-right">
                 {{product.name}} <br>
                 {{product.description }}
             </div>
-            <div class="col-2 text-center m-0 p-1" v-if="! product.variants">
-                {{product.price}} جنية <br><br>
+            <div class="col-2 text-center" v-if="! product.variants">
+                <span>{{product.price}} جنية </span><br><br>
                 <button @click="cart" class="btn-outline-primary btn-sm shadow-sm border border-0"> <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
             </div>
-            <div class="col-2 text-center m-0 p-1" v-if="product.variants">
+            <div class="col-2 text-center" v-if="product.variants">
                 السعر علي حسب اختيارك
             </div>
         </div>
@@ -23,11 +23,10 @@
 </template>
 
 <script>
-import Cart from '../components/cart.vue';
 export default {
     props: ['product'],
     components: {
-        Cart
+
     },
     data() {
         return {
@@ -39,11 +38,11 @@ export default {
         cart() {
             axios.post('/cart', {
                     product: this.product.id,
-                    variant: null,
-                    additions: [],
+                    variant: this.variant,
+                    additions: this.additions,
                 })
                 .then(response => {
-                    Cart.is_empty = true;
+                    this.$emit('addtocart');
                 })
                 .catch(error => {
                     error.response.data.errors;

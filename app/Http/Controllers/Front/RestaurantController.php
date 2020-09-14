@@ -24,6 +24,11 @@ class RestaurantController extends Controller
         $restaurants=Restaurant::paginate(9);
         return response()->json($restaurants);
     }
+    public function restaurantproducts($id)
+    {
+        $restaurant=Restaurant::where('id',$id)->first();
+        return response()->json($restaurant->products);
+    }
 
 
 }

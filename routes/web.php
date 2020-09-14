@@ -96,3 +96,6 @@ Route::get('/restaurants', 'Front\RestaurantController@restaurants');
 Route::get('/allrestaurants', 'Front\RestaurantController@getallrestaurant');
 Route::get('/checkout', 'Front\PagesController@checkout');
 Route::post('/checkout', 'Front\PagesController@savecheckout');
+Route::get('/restaurantproducts/{id}', 'Front\RestaurantController@restaurantproducts');
+
+

@@ -88,7 +88,7 @@ background-color: #00000061;
 </head>
 <body style="background: #f5f5f5">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-white bg-danger shadow-sm fixed-top">
+        <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                    المطعم 2

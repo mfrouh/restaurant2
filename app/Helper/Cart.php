@@ -100,7 +100,7 @@ class Cart
     if(isset($_COOKIE['Cart']))
     {
        foreach (json_decode($_COOKIE['Cart']) as $key => $value) {
-        
+
          //get product
          $product=Product::where('id',$value->product)->first();
          //get variant  if found
@@ -146,12 +146,12 @@ class Cart
     $cart_data = json_decode($cookie_data, true);
     $id_list = array_column($cart_data, 'id');
     $cartid=isset($variant)?'p'.$id.'v'.$variant:'p'.$id;
- 
+
    }
    else
    {
     $cart_data = array();
-   }   
+   }
     if(isset($_COOKIE['Cart']) && in_array($cartid,$id_list))
     {
       return  self::update($id,$variant=null,$additions=[],$quantity);

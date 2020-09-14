@@ -43,6 +43,6 @@
    </div>
 </div> --}}
 <div class="container-fluid">
-    <restaurantdetails></restaurantdetails>
+    <restaurantdetails :restaurant="{{$restaurant}}"></restaurantdetails>
 </div>
 @endsection
