@@ -1,5 +1,5 @@
 <template>
-<div class="card border">
+<div class="card border m-1">
     <img class="card-img-top" src="storage/restaurant/1596681047f8.jpg" alt="">
     <div class="card-body card-boreder ">
         <a class="btn btn-primary btn-sm border-50 float-left" :href="/restaurant/+restaurant.id"><i class="fas fa-hand-point-right"></i></a>

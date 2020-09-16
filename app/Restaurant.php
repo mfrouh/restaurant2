@@ -7,9 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
   protected $fillable=['name','description','delivery','address','phone','state','price_delivery','time_delivery'];
+  protected $appends=['categories'];
   public function products()
   {
       return $this->hasMany('App\Product');
+  }
+  public function selectproducts()
+  {
+      return $this->hasMany('App\Product')->select(['id']);
+  }
+  public function getCategoriesAttribute()
+  {
+    $categories=Product::whereIn('id',$this->selectproducts)->pluck('category_id');
+    $category=Category::whereIn('id',$categories)->select(['id','name','active'])->get();
+    return $category;
   }
   public function categories()
   {

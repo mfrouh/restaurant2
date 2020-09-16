@@ -1,27 +1,27 @@
 <template>
 <div class="row">
     <div class="col-md-3 text-center">
-        <div class="card border">
+        <div class="card border m-1">
             <div class="card-body text-right card-border-right">
                 فلتر <i class="fa fa-filter float-left p-1" aria-hidden="true"></i>
             </div>
         </div>
-        <div class="card border">
+        <div class="card border m-1">
             <div class="card-body text-right">
                 <input type="text" class="form-control border" placeholder="اسم المطعم">
             </div>
         </div>
-        <div class="card border">
+        <div class="card border m-1">
             <div class="card-body text-right">
                 <input type="text" class="form-control border" placeholder=" العنوان">
             </div>
         </div>
-        <div class="card border">
+        <div class="card border m-1">
             <div class="card-body text-right">
                 خدمة توصيل للمنازل : <input type="checkbox" class="float-left m-1">
             </div>
         </div>
-        <div class="card border">
+        <div class="card border m-1">
             <div class="card-body text-right">
                 متاح الان : <input type="checkbox" class="float-left m-1">
             </div>

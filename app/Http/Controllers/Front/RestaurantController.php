@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Product;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
@@ -24,10 +25,11 @@ class RestaurantController extends Controller
         $restaurants=Restaurant::paginate(9);
         return response()->json($restaurants);
     }
-    public function restaurantproducts($id)
+    public function restaurantproducts($id,$category)
     {
         $restaurant=Restaurant::where('id',$id)->first();
-        return response()->json($restaurant->products);
+        $products=Product::where('restaurant_id',$id)->where('category_id',$category)->get();
+        return response()->json($products);
     }
 
 

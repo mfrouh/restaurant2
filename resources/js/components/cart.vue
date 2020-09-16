@@ -46,6 +46,9 @@ export default {
     },
     mounted() {
         this.getcart();
+        this.$on('change', function () {
+            this.getcart();
+        });
     },
     methods: {
         deletecart(id) {
